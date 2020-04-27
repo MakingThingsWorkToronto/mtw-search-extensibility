@@ -1,0 +1,25 @@
+.tagsComponent {
+    display: inline-block;
+    margin-right: 1rem;
+    .tagsIcon { 
+        margin-right:0.25rem;
+        display: inline-block; 
+        vertical-align: middle;
+    }
+    .tagsLink, .tagsLabel {
+        padding: 0;
+        display: inline-block;
+        vertical-align: middle;
+        margin: 0 0.5rem 0 0;
+    }
+    .tags{
+        display: inline-block;
+    }
+    .overflowButton { 
+        padding: 0;
+        height: auto;
+        display: inline-block;
+        vertical-align: middle;
+        margin-left: -0.5rem;
+    }
+}

@@ -1,0 +1,18 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/config.2.0.schema.json",
+  "version": "2.0",
+  "bundles": {
+    "mtw-extensibility": {
+      "components": [
+        {
+          "entrypoint": "./lib/libraries/mtwExtensibility/MTWExtensibilityLibrary.js",
+          "manifest": "./src/libraries/mtwExtensibility/MTWExtensibilityLibrary.manifest.json"
+        }
+      ]
+    }
+  },
+  "externals": {},
+  "localizedResources": {
+    "MTWExtensibilityLibraryStrings": "lib/libraries/mtwExtensibility/loc/{locale}.js"
+  }
+}

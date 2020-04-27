@@ -1,0 +1,9 @@
+{
+  "id": "2501f2fd-d601-4da4-a04d-9f0bd85b1f54",
+  "alias": "MTWExtensibiltyLibrary",
+  "componentType": "Library",
+
+  // The "*" signifies that the version should be taken from the package.json
+  "version": "*",
+  "manifestVersion": 2
+}
