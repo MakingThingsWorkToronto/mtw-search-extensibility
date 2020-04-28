@@ -136,7 +136,7 @@ export class PersonComponent extends React.Component<IPersonComponentProps, IPer
                 }
                 if(userParts.length == 3) {    
                     newUser = { key: "", name: "" };
-                    newUser.email = this.getPart(value);
+                    newUser.email = this.getPart(userParts[2]);
                     blank = 0;
                 }                
             }
