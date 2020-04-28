@@ -3,9 +3,6 @@
   "version": "0.0.1",
   "private": false,
   "main": "lib/index.js",
-  "type": "git",
-  "license": "See license in LICENSE",
-  "url": "https://github.com/MakingThingsWorkToronto/mtw-search-extensibility.git",
   "engines": {
     "node": ">=0.10.0"
   },
@@ -37,6 +34,7 @@
     "@microsoft/rush-stack-compiler-3.3": "^0.5.9",
     "@webcomponents/custom-elements": "^1.2.4",
     "@webcomponents/webcomponentsjs": "^2.1.10",
+    "@types/es6-promise": "0.0.33",
     "@types/react-dom": "16.8.3",
     "@types/react": "16.8.8",
     "tslib": "^1.10.0",

@@ -1,0 +1,23 @@
+.sidePanelComponent {
+    iframe {
+        height:calc(100vh - 50px);
+        height:-webkit-calc(100vh - 50px);
+        border:none;
+        margin:0;
+        padding:0;
+    }
+    :global(.ms-Panel-commands) { position: absolute; right: 0px; }
+    :global(.ms-Panel-header) { margin-top: 1rem !important; padding-left:1rem !important; padding-right:1rem !important; }
+    :global(.ms-Panel-headerText) {  white-space: nowrap; overflow: hidden; text-overflow: ellipsis; width:95%; }
+    :global(.ms-Panel-content) {padding-left:1rem !important;padding-right:1rem !important;}
+}
+.sidePanelLink {
+    vertical-align: middle;
+    > a,
+    > span { font-size: 16px; font-family: "Segoe UI", "Segoe UI Web (West European)", "Segoe UI", -apple-system, BlinkMacSystemFont, Roboto, "Helvetica Neue", sans-serif; 
+        text-decoration: underline; cursor:pointer; color: "[theme: Hyperlink, default: #b3030c]"; vertical-align: middle; display: inline-block; }
+    > a:hover,
+    > span:hover { color: "[theme: HyperlinkActive, default: #770208]"; }
+    > a.openInNewWindow { margin-right: 0.5rem; color: "[theme: Hyperlink, default: #b3030c]"; vertical-align: middle; }
+    > a.openInNewWindow:hover { color: "[theme: HyperlinkActive, default: #770208]"; }
+}

@@ -1,9 +1,25 @@
 .personComponent {
     display: inline-block;
-    .personLink {
+    margin-right: 1rem;
+    .personIcon { 
+        margin-right:0.25rem;
+        display: inline-block; 
+        vertical-align: middle;
+    }
+    .personLink, .personLabel {
+        padding: 0;
+        display: inline-block;
+        vertical-align: middle;
+        margin: 0 0.5rem 0 0;
+    }
+    .people{
         display: inline-block;
     }
-    .personIcon {
-        margin-right: 0.5rem;
+    .peopleOverflowButton { 
+        padding: 0;
+        height: auto;
+        display: inline-block;
+        vertical-align: middle;
+        margin-left: -0.5rem;
     }
 }

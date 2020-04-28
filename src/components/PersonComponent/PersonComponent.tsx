@@ -18,6 +18,16 @@ export interface IPersonComponentProps {
     value?:string;
     
     /**
+     * The number of items we should display before overflowing.
+     */
+    nbrItems?:string;
+
+    /**
+     * The label to display before the list of tags, empty string to display no text
+     */
+    title?:string;
+
+    /**
      * Link type indicating if the link should direct to delve or email
      */
     linkType?:string;
@@ -33,15 +43,24 @@ export interface IPersonComponentState {
     show?: boolean;
 }
 
-export interface IPersonItem {
-    name:string;
-    email:string;
-    userId:string;
-    account:string;
+export interface IPersonItem extends IOverflowSetItemProps {
+    name?:string;
+    email?:string;
+    userId?:string;
+    account?:string;
+    delveUrl?:string;
+    mailTo?:string;
+}
+
+export interface IPeopleItems {
+    items : IOverflowSetItemProps[];
+    overflowItems : IOverflowSetItemProps[];
 }
 
 export class PersonComponent extends React.Component<IPersonComponentProps, IPersonComponentState> {
     
+    private DEFAULT_ITEMS : number = 5;
+
     constructor(props: IPersonComponentProps) {
         super(props);
     }
@@ -52,51 +71,118 @@ export class PersonComponent extends React.Component<IPersonComponentProps, IPer
         
     public render() {
 
-        const person = this.getPerson();
+        const people = this.getPeople();
         let icon: JSX.Element = null;
 
-        if(!person) return "";
+        if(!people) return "";
         
-        const delveUrl = (window.location.protocol + "//" + window.location.host).replace(".sharepoint.com","-my.sharepoint.com")
-                                + "/PersonImmersive.aspx?accountname=" + encodeURIComponent(person.userId);
+        if(this.props.title && this.props.title.length > 0) {
+            people.items.unshift({
+                key: "personLabel", 
+                name: this.props.title
+            });
+        }
 
-        if(this.props.icon && this.props.icon.trim().length>0) icon = <Icon iconName={this.props.icon.trim()} className={styles.personIcon} />;
-        
+        if(this.props.icon && this.props.icon.trim().length>0) {
+            people.items.unshift({
+                key:"personIcon", 
+                name: this.props.icon
+            });
+        }
+
         return <div className={styles.personComponent}>
-            {icon}
-            <Link role="menuitem" className={styles.personLink} title={person.name} href={delveUrl} target="_blank" data-interception="off">{person.name}</Link>
+            <OverflowSet
+                className={styles.people}
+                role="List"
+                items={people.items}
+                overflowItems={people.overflowItems}
+                onRenderOverflowButton={this.onRenderOverflowButton.bind(this)}
+                onRenderItem={this.onRenderItem.bind(this)} />
         </div>;
-
+ 
     }
 
-    private getPerson() : IPersonItem {
+    private getPeople() : IPeopleItems {
         
         let fieldValue = this.props.value ? this.props.value.trim() : "";
 
-        if(!fieldValue || fieldValue.length==0) return;
+        if(!fieldValue || fieldValue.trim().length==0) return;
+        
+        let items : IOverflowSetItemProps[] = [];
+        let overflowItems : IOverflowSetItemProps[] = [];
+        let nbrItems = (!this.props.nbrItems || this.props.nbrItems.trim().length <= 0) ? this.DEFAULT_ITEMS : parseInt(this.props.nbrItems);
+        let users : IPersonItem[] = [];
+        const usersParts = fieldValue.split(" | ");
+        let blank = 0;
+        let newUser: IPersonItem = { key: "", name: "" };
 
-        var parts = fieldValue.split(" | ");
-        
-        if(parts.length == 3) {
-        
-            var accountParts = parts[2].split(" ");
+        usersParts.forEach((value,index)=>{
+            if (blank == 0) {
+                newUser.email = this.getPart(value);
+            } else if (blank == 1) {
+                newUser.name = this.getPart(value);
+            } else if (blank == 2){
+                let userParts = value.split(" ");
+                if(userParts.length >= 2) {
+                    newUser.userId = this.getPart(userParts[0]);
+                    newUser.account = this.getPart(userParts[1]);
+                    newUser.mailTo = "mailto:" + newUser.email;
+                    newUser.key = newUser.account + newUser.userId;
+                    newUser.delveUrl = (newUser.account.indexOf("i:0#.f|membership|") > -1) 
+                        ? (window.location.protocol + "//" + window.location.host).replace(".sharepoint.com","-my.sharepoint.com")
+                                            + "/PersonImmersive.aspx?accountname=" + encodeURIComponent(newUser.account)
+                        : newUser.mailTo;
+                    users.push(newUser);
+                }
+                if(userParts.length == 3) {    
+                    newUser = { key: "", name: "" };
+                    newUser.email = this.getPart(value);
+                    blank = 0;
+                }                
+            }
+            blank++;
+        });
 
-            return { 
-                name: this.getPart(parts[1]),
-                email: this.getPart(parts[0]),
-                account: this.getPart(accountParts[0]),
-                userId: this.getPart(accountParts[1])
-            };
-        
-        }
-        
-        return null;
+        users.forEach((person,index)=>{
+            (index >= nbrItems) ? overflowItems.push(person) : items.push(person);
+        });
+
+        return {
+            items: items,
+            overflowItems: overflowItems
+        };
 
     }
 
     private getPart(value:string) {
         if(value && value.length > 0) return value.trim();
     }
+
+    private onRenderItem(item: IOverflowSetItemProps) :JSX.Element {
+        if(item.key == "personIcon") {
+            return <Icon iconName={item.name} className={styles.personIcon} />;
+        } else if (item.key == "personLabel") {
+            return <Label title={this.props.title} className={styles.personLabel}>{this.props.title}</Label>;
+        } else {
+            var person = item as IPersonItem;
+            var link = this.props.linkType == "delve" ? person.delveUrl : "mailto:" + person.email;
+            return <Link role="menuitem" className={styles.personLink} title={person.name} href={link} target="_blank" data-interception="off">{person.name}</Link>;
+        }
+    }
+      
+    private onRenderOverflowButton(overflowItems: any[] | undefined): JSX.Element {
+        
+        return (
+            <IconButton
+                role="img"
+                title="More options"
+                className={styles.peopleOverflowButton}
+                menuIconProps={{ iconName: 'ChevronDownMed' }}
+                menuProps={{ items: overflowItems! }}
+            />
+        );
+    }
+    
 
 }
 

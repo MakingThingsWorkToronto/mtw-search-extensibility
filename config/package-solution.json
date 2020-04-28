@@ -9,6 +9,6 @@
     "isDomainIsolated": false
   },
   "paths": {
-    "zippedPackage": "solution/mtw-search-extensibility.sppkg"
+    "zippedPackage": "solution/mtw-extensibility.sppkg"
   }
 }

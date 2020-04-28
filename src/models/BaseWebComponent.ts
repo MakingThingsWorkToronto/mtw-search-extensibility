@@ -2,8 +2,8 @@ import * as ReactDOM from 'react-dom';
 import { camelCase } from '@microsoft/sp-lodash-subset';
 import { WebPartContext } from '@microsoft/sp-webpart-base';
 import { IReadonlyTheme } from '@microsoft/sp-component-base';
-import '@webcomponents/custom-elements/src/native-shim';
-import '@webcomponents/custom-elements/custom-elements.min';
+//import '@webcomponents/custom-elements/src/native-shim';
+//import '@webcomponents/custom-elements/custom-elements.min';
 
 export abstract class BaseWebComponent extends HTMLElement {
 

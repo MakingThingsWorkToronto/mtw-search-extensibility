@@ -1,6 +1,6 @@
 # MTW Search Extensibility
 
-Project leverages the [PnP Modern Search Extensibility Library](https://microsoft-search.github.io/pnp-modern-search/search-extensibility-library/getting-started/) pattern to provide a Web Component allowing custom handlebars template developers to open item forms / urls within the search results page in a pop out side panel (iframe).
+Project leverages the [PnP Modern Search Extensibility Library](https://microsoft-search.github.io/pnp-modern-search/search-extensibility-library/getting-started/) pattern to provide convenient Web Components enabling custom handlebars template developers to simplify & speed up UI development.
 
 Tested/Supported for PnP Modern Search >4.0.0
 
@@ -18,7 +18,7 @@ Add the .sppkg to your App Catalog and deploy to all site collections.
 
 # Web Components
 
-## mtw-sidepanel
+## Sidepanel Component
 Web Component allows search developers to open search results in a configurable pop out side panel. Allows users to stay on the search results page and reduces the number of tabs open. Only URLs in the current domain may be displayed in the side panel. If the URL is in a different domain it will open in a new tab.
 
 ### Usage
@@ -98,10 +98,13 @@ The User ID column (postfixed with OWSUSER) containing the users Name, Email and
 #### data-icon
 Optional. The Fabric UI icon which can be found at [Office UI Fabric Icons](https://uifabricicons.azurewebsites.net/). Note, not all Fabric UI icons are supported.
 
+#### data-nbr-items
+Optional. The number of items to display before adding items to the Overflow pop-out. The default number of items is 5. To display all items set this to a large number (1000).
+
 #### data-link-type
 Optional. Determines what type of link to apply to the user link. The options are:
 
-delve: builds a hyperlink to the delve user profile.
+delve: builds a hyperlink to the delve user profile. If the user is a guest this falls back to an email (mailto) link.
 
 email: builds a mailto hyperlink to send email to user.
 
@@ -122,7 +125,7 @@ The label to display between the icon and the list of tags.
 The value to display in the overflow set. May be in the form of a comma separated (localized) taxonomy column or may contain search encoded taxonomy values.
 
 #### data-nbr-items
-Optional. The number of items to display before adding items to the Overflow pop-out. The default number of items is 3. To display all items set this to a large number (1000).
+Optional. The number of items to display before adding items to the Overflow pop-out. The default number of items is 5. To display all items set this to a large number (1000).
 
 #### data-icon
 Optional. The Fabric UI icon which can be found at [Office UI Fabric Icons](https://uifabricicons.azurewebsites.net/). Note, not all Fabric UI icons are supported.

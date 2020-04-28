@@ -20,7 +20,7 @@ export interface ITagsComponentProps {
     /**
      * The number of items we should display before overflowing.
      */
-    nbritems?:string;
+    nbrItems?:string;
 
     /**
      * The label to display before the list of tags, empty string to display no text
@@ -92,7 +92,7 @@ export class TagsComponent extends React.Component<ITagsComponentProps, ITagsCom
         
         let items : IOverflowSetItemProps[] = [];
         let overflowItems : IOverflowSetItemProps[] = [];
-        let nbrItems = (!this.props.nbritems || this.props.nbritems.trim().length <= 0) ? this.DEFAULT_ITEMS : parseInt(this.props.nbritems);
+        let nbrItems = (!this.props.nbrItems || this.props.nbrItems.trim().length <= 0) ? this.DEFAULT_ITEMS : parseInt(this.props.nbrItems);
         let fieldValue = this.props.value ? this.props.value.trim() : "";
 
         if(nbrItems == NaN) {
