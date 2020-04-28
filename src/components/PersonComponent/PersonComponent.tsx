@@ -128,7 +128,7 @@ export class PersonComponent extends React.Component<IPersonComponentProps, IPer
                     newUser.account = this.getPart(userParts[1]);
                     newUser.mailTo = "mailto:" + newUser.email;
                     newUser.key = newUser.account + newUser.userId;
-                    newUser.delveUrl = (newUser.account.indexOf("i:0#.f|membership|") > -1) 
+                    newUser.delveUrl = (newUser.account.indexOf("#ext#") == -1) 
                         ? (window.location.protocol + "//" + window.location.host).replace(".sharepoint.com","-my.sharepoint.com")
                                             + "/PersonImmersive.aspx?accountname=" + encodeURIComponent(newUser.account)
                         : newUser.mailTo;
