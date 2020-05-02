@@ -18,7 +18,38 @@ Add the .sppkg to your App Catalog and deploy to all site collections.
 
 # Web Components
 
-## Sidepanel Component
+## Sidepanel Template Component
+Web Component allows search developers to open a custom template in a configurable pop out side panel. Allows users to stay on the search results page and reduces the number of tabs open. 
+
+### Usage
+
+Add the web component directly in handlebars template using the following HTML tag:
+
+```html
+<mtw-sidepanel-template data-title="{{Title}}" data-position="custom|customNear|extraLarge|large|largeFixed|medium|smallFixedFar|smallFixedNear|smallFluid" data-size="100px|10rem|40%|etc.">
+    <div>
+        <h2>{{Title}}</h2>
+        <a href=="{{getUrl item}}">Link to {{Title}}</a>
+    </div>
+</mtw-sidepanel>
+```
+
+#### data-title
+Contains text appearing in header of the side panel
+
+#### data-position
+The position of the side panel, either the left or right size. All positions with the exception of custom/customNear leverage device specific breakpoints for width (320-470, 480-639, 640-1023, 1023-1365, 1365px and up). Custom positions do not leverage device specific breakpoints and only accept one width. The default position is medium.
+
+See Sidepanel URL Component for options.
+
+#### data-size
+Optional. The width of the side panel. May be any valid HTML width value. Size is only applied with positions: custom or customNear. 
+
+#### mtw-sidepanel-template innerHTML
+Contains the handlebars template to be rendered within the side panel. Can be any valid HTML including web components.
+
+
+## Sidepanel URL Component
 Web Component allows search developers to open search results in a configurable pop out side panel. Allows users to stay on the search results page and reduces the number of tabs open. Only URLs in the current domain may be displayed in the side panel. If the URL is in a different domain it will open in a new tab.
 
 ### Usage
@@ -30,7 +61,7 @@ Add the web component directly in handlebars template using the following HTML t
 ```
 
 #### data-title
-Contains text appearing in top of the side panel
+Contains text appearing in header of the side panel
 
 #### data-url
 Contains the URL to the list item / page to be displayed in the side panel. 
