@@ -1,0 +1,16 @@
+.urlComponent {
+    display: inline-block;
+    margin-right: 1rem;
+    .urlLabel {
+        display: inline-block;
+        vertical-align: middle;
+    }
+    .urlLink {
+        display: inline-block;
+        vertical-align: middle;
+    }
+    .icon {
+        margin-right: 0.5rem;
+        vertical-align: middle;
+    }
+}

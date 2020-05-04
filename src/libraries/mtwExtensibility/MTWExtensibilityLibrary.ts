@@ -3,6 +3,7 @@ import { SidePanelComponentWebComponent } from "../../components/SidePanelCompon
 import { TagsComponentWebComponent } from "../../components/TagsComponent/TagsComponent";
 import { PersonComponentWebComponent } from "../../components/PersonComponent/PersonComponent";
 import { IconComponentWebComponent } from "../../components/IconComponent/IconComponent";
+import { URLComponentWebComponent } from "../../components/URLComponent/URLComponent";
 import { SidePanelTemplateWebComponent } from "../../components/SidePanelTemplateComponent/SidePanelTemplateComponent";
 import { IComponentDefinition } from "../../models/IComponentDefinition";
 
@@ -35,6 +36,10 @@ export class MTWExtensibilityLibrary {
       {
         componentName: 'mtw-icon',
         componentClass: IconComponentWebComponent
+      },
+      {
+        componentName: 'mtw-url',
+        componentClass: URLComponentWebComponent
       }
     ];
   }

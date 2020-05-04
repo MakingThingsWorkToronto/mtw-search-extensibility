@@ -110,6 +110,9 @@ Add the Web Component to the handlebars template using the following HTML tag:
 #### data-icon
 Optional. The Fabric UI icon which can be found at [Office UI Fabric Icons](https://uifabricicons.azurewebsites.net/). Note, not all Fabric UI icons are supported.
 
+#### data-title
+The label to display between the icon and the hyperlink.
+
 #### data-value
 The label to display to the right of the icon. Users may format data using handlebars helper functions.
 
@@ -142,11 +145,11 @@ email: builds a mailto hyperlink to send email to user.
 
 ## Tags Component
 
-Web Component displays a simple list of Taxonomy column values to the right of an Office UI Fabric Icon using an Overflow Set. The input value may be in the form of a comma separated (localized) taxonomy column or may contain search encoded taxonomy values.
+Web Component displays a simple list of Taxonomy column values to the right of an Office UI Fabric Icon using an Overflow Set. The input value may be in the form of a comma separated (localized) taxonomy column or may contain search encoded taxonomy values. If the data-filter-property is set to a valid managed property the tags component will render a [filter deep link](https://microsoft-search.github.io/pnp-modern-search/search-parts/search-results/#filters-deep-links) into the search results.
 
 ### Usage
 ```html
-<mtw-tags data-icon="Tag" data-nbr-items="2" data-title="Tags:" data-value="{{owstaxidmetadataalltagsinfo}}"></mtw-tags>
+<mtw-tags data-icon="Tag" data-nbr-items="2" data-title="Tags:" data-value="{{owstaxidmetadataalltagsinfo}}" data-filter-property="owstaxidmetadataalltagsinfo" data-filter-condition="and|or"></mtw-tags>
 ```
 
 #### data-title
@@ -157,6 +160,34 @@ The value to display in the overflow set. May be in the form of a comma separate
 
 #### data-nbr-items
 Optional. The number of items to display before adding items to the Overflow pop-out. The default number of items is 5. To display all items set this to a large number (1000).
+
+#### data-icon
+Optional. The Fabric UI icon which can be found at [Office UI Fabric Icons](https://uifabricicons.azurewebsites.net/). Note, not all Fabric UI icons are supported.
+
+#### data-filter-property
+Optional. Required if you want the tag to activate a refiner when clicked. This should be the managed property name you want to filter on.
+
+#### data-filter-condition
+Optional. Defaults to "and". Specifies the operator for multiple filters. 
+
+
+## URL Component
+
+Web Component displays a hyperlink managed property optionally with an icon and or label. Users may override the hyperlink text with custom text.
+
+### Usage
+```html
+<mtw-url data-icon="Link" data-title="URL:" data-text="" data-value="{{URLOWSURLH}}"></mtw-url>
+```
+
+#### data-title
+The label to display between the icon and the hyperlink.
+
+#### data-text
+Optional. The text to display on the hyperlink. If blank the label is pulled from the hyperlink data.
+
+#### data-value
+The value to display in the hyperlink. Data should be in the format "https://hyperlink, label"
 
 #### data-icon
 Optional. The Fabric UI icon which can be found at [Office UI Fabric Icons](https://uifabricicons.azurewebsites.net/). Note, not all Fabric UI icons are supported.

@@ -7,8 +7,10 @@ import { IOverflowSetItemProps, OverflowSet } from 'office-ui-fabric-react/lib/O
 import styles from './TagsComponent.module.scss';
 import { Icon } from 'office-ui-fabric-react/lib/Icon';
 import { values, initializeIcons, Label } from 'office-ui-fabric-react';
-
-
+import { SearchHelper } from '../../helper/SearchHelper';
+import { UrlHelper } from '../../helper/UrlHelper';
+import { IRefinementFilter, IRefinementValue, RefinementOperator } from "../../models/ISearchResult";
+import { cloneDeep } from '@microsoft/sp-lodash-subset';
 
 export interface ITagsComponentProps {
 
@@ -16,7 +18,17 @@ export interface ITagsComponentProps {
      * Title of the pop out panel
      */
     value?:string;
-    
+
+    /**
+     * Filter managed property name
+     */
+    filterProperty?:string;
+
+    /**
+     * Filter operator
+     */
+    filterOperator?:string;
+
     /**
      * The number of items we should display before overflowing.
      */
@@ -46,6 +58,7 @@ export interface ITagsItems {
 export class TagsComponent extends React.Component<ITagsComponentProps, ITagsComponentState> {
     
     private DEFAULT_ITEMS : number = 5;
+    private _currentFilters : IRefinementFilter[] = [];
     
     constructor(props: ITagsComponentProps) {
         super(props);
@@ -53,6 +66,7 @@ export class TagsComponent extends React.Component<ITagsComponentProps, ITagsCom
     
     protected async onInit(): Promise<void> {
         initializeIcons();
+        this._currentFilters = SearchHelper.getRefinementFiltersFromUrl();
     }
         
     public render() {
@@ -83,7 +97,8 @@ export class TagsComponent extends React.Component<ITagsComponentProps, ITagsCom
                 items={items.items}
                 overflowItems={items.overflowItems}
                 onRenderOverflowButton={this.onRenderOverflowButton.bind(this)}
-                onRenderItem={this.onRenderItem.bind(this)} />
+                onRenderItem={this.onRenderItem.bind(this)}
+                />
         </div>;
 
     }
@@ -105,24 +120,26 @@ export class TagsComponent extends React.Component<ITagsComponentProps, ITagsCom
             return;
         }
         
+        // if this is a raw taxonomy field
         if(fieldValue.indexOf("L0|#")>-1) {
             
-            // treat this as a non-localized field
-            const allItems = fieldValue.split("L0|#");
+            const allParts = fieldValue.split(";");
             let allTags : any[] = [];
 
-            allItems.forEach((value,index)=>{
+            allParts.forEach((value)=>{
+
+                let parts = value.split("|");
+                let typePart = parts[0];
                 
-                if(value && value.trim().length>0) {
-                    
-                    const itemParts = value.split("|");
+                if(typePart == "L0" && parts.length == 3) {
 
                     allTags.push({
-                        id: itemParts[0].trim(),
-                        label: itemParts[1].trim()
+                        id: parts[1].substr(1),
+                        label: parts[2]
                     });
-                }
 
+                }
+                
             });
 
             allTags.forEach((value, index) => {
@@ -151,9 +168,51 @@ export class TagsComponent extends React.Component<ITagsComponentProps, ITagsCom
         } else if (item.key == "tagLabel") {
             return <Label title={this.props.title} className={styles.tagsLabel}>{this.props.title}</Label>;
         } else {
-            var text = item.name.replace("＆","&");
-            return <Link role="menuitem" className={styles.tagsLink} title={text} onClick={item.onClick}>{text}</Link>;
+            let text = item.name.replace("＆","&");
+            if(this.props.filterProperty) {
+                const href = this.buildFilter(item.name);
+                return <Link role="menuitem" className={styles.tagsLink} title={text} href={href} data-interception="off">{text}</Link>;
+            } else {
+                return <Label className={styles.tagsLink} title={text}>{text}</Label>;
+            }
         }
+    }
+
+    private buildFilter(filterValue:string) : string {
+        
+        const filterProperty = this.props.filterProperty.trim();
+        let filters = cloneDeep(this._currentFilters);
+        const filterText = "string('" + filterValue.replace("'","\'") + "')";
+        const operator = (this.props.filterOperator && this.props.filterOperator == RefinementOperator.OR)
+                            ? RefinementOperator.OR
+                            : RefinementOperator.AND;
+
+        const newValue : IRefinementValue = {
+            RefinementCount: -1,
+            RefinementName: filterText,
+            RefinementToken: filterText,
+            RefinementValue: filterText,
+        };
+
+        if(!filters.some((filter)=>{
+                
+                if(filter.FilterName == filterProperty) {
+                    filter.Values.push(newValue);
+                    return true;
+                }
+                
+                return false;
+
+            })) {
+            
+            filters.push({ FilterName: filterProperty, Operator: operator, Values: [newValue] });
+
+        }
+
+        const filterQueryString = SearchHelper.buildRefinementQueryString(filters);
+
+        return UrlHelper.addOrReplaceQueryStringParam(window.location.href, "filters", filterQueryString);
+
     }
       
     private onRenderOverflowButton(overflowItems: any[] | undefined): JSX.Element {
@@ -169,8 +228,13 @@ export class TagsComponent extends React.Component<ITagsComponentProps, ITagsCom
         );
     }
     
-    private tagClicked():void {
-
+    private tagClicked(tag:string,item:any,element:HTMLElement):void {
+        if(tag && this.props.filterProperty) {
+            const trimTag = tag.trim();
+            if(trimTag.length>0) {
+                window.location.href = this.buildFilter(tag.trim());
+            }
+        }
     }
 
 }

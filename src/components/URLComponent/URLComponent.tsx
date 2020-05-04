@@ -4,13 +4,13 @@ import { BaseWebComponent } from '../../models/BaseWebComponent';
 import { IconButton, IButtonStyles } from 'office-ui-fabric-react/lib/Button';
 import { Link } from 'office-ui-fabric-react/lib/Link';
 import { IOverflowSetItemProps, OverflowSet } from 'office-ui-fabric-react/lib/OverflowSet';
-import styles from './IconComponent.module.scss';
+import styles from './URLComponent.module.scss';
 import { Icon } from 'office-ui-fabric-react/lib/Icon';
 import { values, initializeIcons, Label } from 'office-ui-fabric-react';
 
 
 
-export interface IIconComponentProps {
+export interface IURLComponentProps {
 
     /**
      * The label to display before the link
@@ -18,7 +18,12 @@ export interface IIconComponentProps {
     title?:string;
 
     /**
-     * Field value 
+     * The new label to appear as the hyperlink text
+     */
+    text?:string;
+
+    /**
+     * The value of the hyperlink including URL,Label
      */
     value?:string;
     
@@ -29,13 +34,13 @@ export interface IIconComponentProps {
 
 }
 
-export interface IIconComponentState {
+export interface IURLComponentState {
     show?: boolean;
 }
 
-export class IconComponent extends React.Component<IIconComponentProps, IIconComponentState> {
+export class URLComponent extends React.Component<IURLComponentProps, IURLComponentState> {
     
-    constructor(props: IIconComponentProps) {
+    constructor(props: IURLComponentProps) {
         super(props);
     }
     
@@ -46,18 +51,26 @@ export class IconComponent extends React.Component<IIconComponentProps, IIconCom
     public render() {
 
         const value = this.getValue();
-        let icon: JSX.Element = null;
+        let iconJSX: JSX.Element = null;
         let titleJSX: JSX.Element = null;
+        let link:string = "";
+        let label: string = "";
 
         if(!value) return "";
         
-        if(this.props.icon && this.props.icon.trim().length > 0) icon = <Icon iconName={this.props.icon.trim()} className={styles.icon} />;
-        
-        if(this.props.title && this.props.title.trim().length > 0) titleJSX = <Label className={styles.iconLabel} title={this.props.title}>{this.props.title}</Label>;
+        const urlParts = value.split(", ");
+        link = urlParts[0];
+        label = urlParts.length > 1 ? urlParts[1] : "";
 
-        return <div className={styles.iconComponent}>
-            {icon}{titleJSX}
-            <Label className={styles.iconLabel} title={value}>{value}</Label>
+        if(this.props.text) label = this.props.text;
+
+        if(this.props.icon && this.props.icon.trim().length>0) iconJSX = <Icon iconName={this.props.icon.trim()} className={styles.icon} />;
+        
+        if(this.props.title && this.props.title.trim().length > 0) titleJSX = <Label className={styles.urlLabel} title={this.props.title}>{this.props.title}</Label>;
+
+        return <div className={styles.urlComponent}>
+            {iconJSX}{titleJSX}
+            <Link className={styles.urlLink} title={label}>{label}</Link>
         </div>;
 
     }
@@ -70,7 +83,7 @@ export class IconComponent extends React.Component<IIconComponentProps, IIconCom
 
 }
 
-export class IconComponentWebComponent extends BaseWebComponent {
+export class URLComponentWebComponent extends BaseWebComponent {
    
     public constructor() {
         super(); 
@@ -81,7 +94,7 @@ export class IconComponentWebComponent extends BaseWebComponent {
        let props = this.resolveAttributes();
 
        // You can use this._ctx here to access current Web Part context
-       const customComponent = <IconComponent {...props}/>;
+       const customComponent = <URLComponent {...props}/>;
        ReactDOM.render(customComponent, this);
     }    
 }

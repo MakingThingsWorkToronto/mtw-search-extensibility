@@ -15,7 +15,7 @@
     "@microsoft/sp-component-base": "1.9.1",
     "@microsoft/sp-core-library": "1.9.1",
     "@microsoft/sp-http": "1.9.1",
-    "@microsoft/sp-lodash-subset": "1.9.1",
+    "@microsoft/sp-lodash-subset": "^1.9.1",
     "@microsoft/sp-page-context": "1.9.1",
     "@microsoft/sp-property-pane": "1.9.1",
     "@microsoft/sp-webpart-base": "1.9.1",
