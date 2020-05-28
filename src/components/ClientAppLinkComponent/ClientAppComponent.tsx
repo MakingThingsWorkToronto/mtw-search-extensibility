@@ -4,13 +4,13 @@ import { BaseWebComponent } from '../../models/BaseWebComponent';
 import { IconButton, IButtonStyles } from 'office-ui-fabric-react/lib/Button';
 import { Link } from 'office-ui-fabric-react/lib/Link';
 import { IOverflowSetItemProps, OverflowSet } from 'office-ui-fabric-react/lib/OverflowSet';
-import styles from './URLComponent.module.scss';
+import styles from './ClientAppComponent.module.scss';
 import { Icon } from 'office-ui-fabric-react/lib/Icon';
 import { values, initializeIcons, Label } from 'office-ui-fabric-react';
 
 
 
-export interface IURLComponentProps {
+export interface IClientAppComponentProps {
 
     /**
      * The label to display before the link
@@ -49,13 +49,13 @@ export interface IURLComponentProps {
     
 }
 
-export interface IURLComponentState {
+export interface IClientAppComponentState {
     show?: boolean;
 }
 
-export class URLComponent extends React.Component<IURLComponentProps, IURLComponentState> {
+export class ClientAppComponent extends React.Component<IClientAppComponentProps, IClientAppComponentState> {
     
-    constructor(props: IURLComponentProps) {
+    constructor(props: IClientAppComponentProps) {
         super(props);
     }
     
@@ -71,12 +71,12 @@ export class URLComponent extends React.Component<IURLComponentProps, IURLCompon
         let link:string = "";
         let label: string = "";
         let linkCssClass:string = this.props.linkCssClass 
-                                ? styles.urlLink + " " + this.props.linkCssClass 
-                                : styles.urlLink;
+                                ? styles.link + " " + this.props.linkCssClass 
+                                : styles.link;
         
         let labelCssClass:string = this.props.labelCssClass 
-                                ? styles.urlLabel + " " + this.props.labelCssClass
-                                : styles.urlLabel;
+                                ? styles.label + " " + this.props.labelCssClass
+                                : styles.label;
 
         let iconCssClass:string = this.props.iconCssClass
                                 ? styles.icon + " " + this.props.iconCssClass 
@@ -84,6 +84,11 @@ export class URLComponent extends React.Component<IURLComponentProps, IURLCompon
 
         if(!value) return "";
         
+        // See more here: https://docs.microsoft.com/en-us/office/client-developer/office-uri-schemes?redirectedfrom=MSDN
+        // examples:
+        // - https://stackoverflow.com/questions/27527672/mimic-sharepoint-edit-office-file-download
+        // - window.location.href = "ms-word:ofe|u|https://website.sharepoint.com/sites/sitename/Shared%20Documents/1.docx";
+
         const urlParts = value.split(", ");
         link = urlParts[0];
         label = urlParts.length > 1 ? urlParts[1] : "";
@@ -94,7 +99,7 @@ export class URLComponent extends React.Component<IURLComponentProps, IURLCompon
         
         if(this.props.title && this.props.title.trim().length > 0) titleJSX = <Label className={labelCssClass} title={this.props.title}>{this.props.title}</Label>;
 
-        return <div className={styles.urlComponent}>
+        return <div className={styles.clientAppComponent}>
             {iconJSX}{titleJSX}
             <Link className={linkCssClass} title={label} href={link}>{label}</Link>
         </div>;
@@ -109,7 +114,7 @@ export class URLComponent extends React.Component<IURLComponentProps, IURLCompon
 
 }
 
-export class URLComponentWebComponent extends BaseWebComponent {
+export class ClientAppLinkComponentWebComponent extends BaseWebComponent {
    
     public constructor() {
         super(); 
@@ -120,7 +125,7 @@ export class URLComponentWebComponent extends BaseWebComponent {
        let props = this.resolveAttributes();
 
        // You can use this._ctx here to access current Web Part context
-       const customComponent = <URLComponent {...props}/>;
+       const customComponent = <ClientAppComponent {...props}/>;
        ReactDOM.render(customComponent, this);
     }    
 }

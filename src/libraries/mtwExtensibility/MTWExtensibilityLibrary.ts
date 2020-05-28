@@ -6,7 +6,7 @@ import { IconComponentWebComponent } from "../../components/IconComponent/IconCo
 import { URLComponentWebComponent } from "../../components/URLComponent/URLComponent";
 import { SidePanelTemplateWebComponent } from "../../components/SidePanelTemplateComponent/SidePanelTemplateComponent";
 import { IComponentDefinition } from "../../models/IComponentDefinition";
-
+import { ClientAppLinkComponentWebComponent } from "../../components/ClientAppLinkComponent/ClientAppComponent";
 
 export class MTWExtensibilityLibrary {
 
@@ -40,6 +40,10 @@ export class MTWExtensibilityLibrary {
       {
         componentName: 'mtw-url',
         componentClass: URLComponentWebComponent
+      },
+      {
+        componentName: 'mtw-clientapp-link',
+        componentClass: ClientAppLinkComponentWebComponent
       }
     ];
   }
