@@ -1,12 +1,13 @@
 import { IExtensibilityLibrary } from "../../models/IExtensibilityLibrary";
-import { SidePanelComponentWebComponent } from "../../components/SidePanelComponent/SidePanelComponent";
-import { TagsComponentWebComponent } from "../../components/TagsComponent/TagsComponent";
-import { PersonComponentWebComponent } from "../../components/PersonComponent/PersonComponent";
-import { IconComponentWebComponent } from "../../components/IconComponent/IconComponent";
-import { URLComponentWebComponent } from "../../components/URLComponent/URLComponent";
+import { SidePanelWebComponent } from "../../components/SidePanelComponent/SidePanelComponent";
+import { TagsWebComponent } from "../../components/TagsComponent/TagsComponent";
+import { PersonWebComponent } from "../../components/PersonComponent/PersonComponent";
+import { IconWebComponent } from "../../components/IconComponent/IconComponent";
+import { URLWebComponent } from "../../components/URLComponent/URLComponent";
 import { SidePanelTemplateWebComponent } from "../../components/SidePanelTemplateComponent/SidePanelTemplateComponent";
+import { FlowButtonWebComponent } from "../../components/FlowButtonComponent/FlowButtonComponent";
 import { IComponentDefinition } from "../../models/IComponentDefinition";
-import { ClientAppLinkComponentWebComponent } from "../../components/ClientAppLinkComponent/ClientAppComponent";
+import { ClientAppLinkWebComponent, ClientAppComponent } from "../../components/ClientAppLinkComponent/ClientAppLinkComponent";
 
 export class MTWExtensibilityLibrary {
 
@@ -19,7 +20,7 @@ export class MTWExtensibilityLibrary {
     return [
       {
         componentName: 'mtw-sidepanel',
-        componentClass: SidePanelComponentWebComponent
+        componentClass: SidePanelWebComponent
       },
       {
         componentName: 'mtw-sidepanel-template',
@@ -27,23 +28,27 @@ export class MTWExtensibilityLibrary {
       },
       {
         componentName: 'mtw-tags',
-        componentClass: TagsComponentWebComponent
+        componentClass: TagsWebComponent
       },
       {
         componentName: 'mtw-person',
-        componentClass: PersonComponentWebComponent
+        componentClass: PersonWebComponent
       },
       {
         componentName: 'mtw-icon',
-        componentClass: IconComponentWebComponent
+        componentClass: IconWebComponent
       },
       {
         componentName: 'mtw-url',
-        componentClass: URLComponentWebComponent
+        componentClass: URLWebComponent
       },
       {
         componentName: 'mtw-clientapp-link',
-        componentClass: ClientAppLinkComponentWebComponent
+        componentClass: ClientAppLinkWebComponent
+      },
+      {
+        componentName: 'mtw-flow-button',
+        componentClass: FlowButtonWebComponent
       }
     ];
   }

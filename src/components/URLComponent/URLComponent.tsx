@@ -109,7 +109,7 @@ export class URLComponent extends React.Component<IURLComponentProps, IURLCompon
 
 }
 
-export class URLComponentWebComponent extends BaseWebComponent {
+export class URLWebComponent extends BaseWebComponent {
    
     public constructor() {
         super(); 
