@@ -7,17 +7,27 @@ Tested/Supported for PnP Modern Search >3.10
 # All Web Components
 
 [Flow Button](#-flow-button-component)
+
 [Sidepanel Template](#-sidepanel-template-component)
+
 [Sidepanel URL](#-sidepanel-url-component)
+
 [Icon](#-icon-component)
+
 [Person](#-person-component)
+
 [Tags](#-tags-component)
+
 [URL](#-url-component)
+
 [Client App Link](#-client-app-link)
+
 
 # Installing on SharePoint Online
 
-Build solution using: 
+Download latest release, upload to app catalog and deploy to all site collections.
+
+Or build solution using: 
 
 ```
 gulp clean
@@ -26,6 +36,9 @@ gulp package-solution --ship
 ```
 
 Add the .sppkg to your App Catalog and deploy to all site collections.
+
+Debugging: create a debug build and use gulp serve locally.
+
 
 # Client App Link
 Web Component allows search developers to create a hyperlink that opens the document within the native Office application. Should no native office application be found a standard http hyperlink will be created.
