@@ -6,14 +6,14 @@ Tested/Supported for PnP Modern Search >3.10
 
 # All Web Components
 
-[Flow Button](##-flow-button-component)
-[Sidepanel Template](##-sidepanel-template-component)
-[Sidepanel URL](##-sidepanel-url-component)
-[Icon](##-icon-component)
-[Person](##-person-component)
-[Tags](##-tags-component)
-[URL](##-url-component)
-[Client App Link](##-client-app-link)
+[Flow Button](#-flow-button-component)
+[Sidepanel Template](#-sidepanel-template-component)
+[Sidepanel URL](#-sidepanel-url-component)
+[Icon](#-icon-component)
+[Person](#-person-component)
+[Tags](#-tags-component)
+[URL](#-url-component)
+[Client App Link](#-client-app-link)
 
 # Installing on SharePoint Online
 
@@ -27,18 +27,16 @@ gulp package-solution --ship
 
 Add the .sppkg to your App Catalog and deploy to all site collections.
 
-# Web Component Documentation
-
-
-## Client App Link
+# Client App Link
 Web Component allows search developers to create a hyperlink that opens the document within the native Office application. Should no native office application be found a standard http hyperlink will be created.
 
-### Usage
+## Usage
 Add the web component directly in handlebars template using the following HTML tag:
 
 ```html
 <mtw-clientapp-link data-title="{{Title}}" data-url="{{OriginalPath}}" data-file-type="{{FileType}}" data-icon-size="16 | 20 | 24 | 32 | 40 | 48 | 64 | 96" data-scheme="view | edit | newfromtemplate | newfromtemplatedefaultsave" data-default-save-folder="https://site.sharepoint.com/library/folder/" data-icon="Document" data-link-css-class="class-name" data-link-icon-css-class="class-name" ></mtw-clientapp-link>
 ```
+## Attributes
 
 ### data-title
 Contains the text appearing in the hyperlink. The component will not render if title is not specified.
@@ -69,15 +67,17 @@ Optional: The CSS class to apply to the icon.
 
 
 
-## Flow Button Component
+# Flow Button Component
 Web Component allows search developers to run an Flow built on the HTTP Request trigger.
 
-### Usage
+## Usage
 Add the web component directly in handlebars template using the following HTML tag:
 
 ```html
 <mtw-flow-button data-title="Run Flow" data-icon="Play" data-endpoint="https://prod-18.canadacentral.logic.azure.com:443/workflows/example/triggers/manual/paths/invoke" data-body="{&#x22;Example&#x22;:&#x22;example-data&#x22;, &#x22;ID&#x22;: &#x22;1&#x22;}" data-success="The flow run was successful" data-failure="The flow run failed" data-class-name="action-button-custom-css-class" data-success-class="success-message-custom-css-class" data-failure-class="failure-message-custom-css-class"></mtw-flow-button>
 ```
+
+## Attributes
 
 ### data-title
 Required: Contains the text appearing in the flow action button.
@@ -108,10 +108,10 @@ Optional: The CSS class name that should be applied to the failure message bar.
 
 
 
-## Sidepanel Template Component
+# Sidepanel Template Component
 Web Component allows search developers to open a custom template in a configurable pop out side panel. Allows users to stay on the search results page and reduces the number of tabs open. 
 
-### Usage
+## Usage
 
 Add the web component directly in handlebars template using the following HTML tag:
 
@@ -123,6 +123,8 @@ Add the web component directly in handlebars template using the following HTML t
     </div>
 </mtw-sidepanel>
 ```
+
+## Attributes
 
 #### data-title
 Contains text appearing in header of the side panel
@@ -139,16 +141,17 @@ Optional. The width of the side panel. May be any valid HTML width value. Size i
 Contains the handlebars template to be rendered within the side panel. Can be any valid HTML including web components.
 
 
-## Sidepanel URL Component
+# Sidepanel URL Component
 Web Component allows search developers to open search results in a configurable pop out side panel. Allows users to stay on the search results page and reduces the number of tabs open. Only URLs in the current domain may be displayed in the side panel. If the URL is in a different domain it will open in a new tab.
 
-### Usage
+## Usage
 
 Add the web component directly in handlebars template using the following HTML tag:
 
 ```html
 <mtw-sidepanel data-title="{{Title}}" data-url="{{getUrl item}}" data-position="custom|customNear|extraLarge|large|largeFixed|medium|smallFixedFar|smallFixedNear|smallFluid" data-size="100px|10rem|40%|etc." data-new-window="true|false" ></mtw-sidepanel>
 ```
+## Attributes
 
 #### data-title
 Contains text appearing in header of the side panel
@@ -186,16 +189,18 @@ Optional. The width of the side panel. May be any valid HTML width value. Size i
 Optional. Determines if users should see the open in new window icon before the link. When the icon is clicked the link opens in a new tab/window. Default false. Set to true to display icon. 
 
 
-## Icon Component
+# Icon Component
 
 Web Component displays a label to the right of a configurable fabric ui icon. Speeds up the development of search UIs. 
 
-### Usage
+## Usage
 
 Add the Web Component to the handlebars template using the following HTML tag:
 ```html
 <mtw-icon data-icon="Calendar" data-value="{{getDate LastModifiedTime 'MM-DD-YYYY'}}"></mtw-icon>
 ```
+
+## Attributes
 
 #### data-icon
 Optional. The Fabric UI icon which can be found at [Office UI Fabric Icons](https://uifabricicons.azurewebsites.net/). Note, not all Fabric UI icons are supported.
@@ -207,14 +212,16 @@ The label to display between the icon and the hyperlink.
 The label to display to the right of the icon. Users may format data using handlebars helper functions.
 
 
-## Person Component
+# Person Component
 
 Web Component displays a simple list of hyperlinked usernames to the right of an Office UI Fabric Icon using an Overflow Set. 
 
-### Usage
+## Usage
 ```html
 <mtw-person data-icon="Contact" data-link-type="delve|email" data-value="{{AuthorOWSUSER}}"></mtw-person>
 ```
+
+## Attributes
 
 #### data-value
 The User ID column (postfixed with OWSUSER) containing the users Name, Email and Account information. Account information is required to build a link to email or delve profile.
@@ -233,14 +240,16 @@ delve: builds a hyperlink to the delve user profile. If the user is a guest this
 email: builds a mailto hyperlink to send email to user.
 
 
-## Tags Component
+# Tags Component
 
 Web Component displays a simple list of Taxonomy column values to the right of an Office UI Fabric Icon using an Overflow Set. The input value may be in the form of a comma separated (localized) taxonomy column or may contain search encoded taxonomy values. If the data-filter-property is set to a valid managed property the tags component will render a [filter deep link](https://microsoft-search.github.io/pnp-modern-search/search-parts/search-results/#filters-deep-links) into the search results.
 
-### Usage
+## Usage
 ```html
 <mtw-tags data-icon="Tag" data-nbr-items="2" data-title="Tags:" data-value="{{owstaxidmetadataalltagsinfo}}" data-filter-property="owstaxidmetadataalltagsinfo" data-filter-condition="and|or"></mtw-tags>
 ```
+
+## Attributes
 
 #### data-title
 The label to display between the icon and the list of tags.
@@ -261,14 +270,16 @@ Optional. Required if you want the tag to activate a refiner when clicked. This 
 Optional. Defaults to "and". Specifies the operator for multiple filters. 
 
 
-## URL Component
+# URL Component
 
 Web Component displays a hyperlink managed property optionally with an icon and or label. Users may override the hyperlink text with custom text.
 
-### Usage
+## Usage
 ```html
 <mtw-url data-icon="Link" data-title="URL:" data-text="" data-value="{{URLOWSURLH}}"></mtw-url>
 ```
+
+## Attributes
 
 #### data-title
 The label to display between the icon and the hyperlink.
