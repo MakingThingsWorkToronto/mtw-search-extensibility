@@ -23,6 +23,8 @@ export interface IPageTitleComponentState {
 
 export class PageTitleComponent extends React.Component<IPageTitleComponentProps, IPageTitleComponentState> {
     
+    private _originalTitle : string = "";
+
     constructor(props: IPageTitleComponentProps) {
         super(props);
     }
@@ -30,7 +32,11 @@ export class PageTitleComponent extends React.Component<IPageTitleComponentProps
     protected async onInit(): Promise<void> {
         initializeIcons();
     }
-        
+
+    public componentWillUnmount(){
+        document.title = this._originalTitle;
+    }
+
     public render() {
 
         // The title is always the sibling before the authorByline_* element
@@ -38,7 +44,11 @@ export class PageTitleComponent extends React.Component<IPageTitleComponentProps
         let inputsValid = true;
         if(!this.props.title) inputsValid = this.badInput("The data-title attribute is required.");
 
-        if(inputsValid) document.querySelectorAll("div[class^='authorByline_']")[0].previousElementSibling.textContent = this.props.title;
+        if(inputsValid) {
+            const te = document.querySelectorAll("div[class^='authorByline_']")[0].previousElementSibling;
+            this._originalTitle = te.textContent;
+            te.textContent = document.title = this.props.title;
+        }
 
         return null;
 
