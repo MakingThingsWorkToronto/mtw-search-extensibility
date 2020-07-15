@@ -8,6 +8,11 @@ import { Icon } from 'office-ui-fabric-react/lib/Icon';
 export interface ISidePanelComponentProps {
 
     /**
+     * Label of the link
+     */
+    label?:string;
+
+    /**
      * Title of the pop out panel
      */
     title?:string;
@@ -65,8 +70,8 @@ export class SidePanelComponent extends React.Component<ISidePanelComponentProps
         return <div className={styles.sidePanelLink}>
             {openInNewWindow}
             {sameDomain 
-                ? <span onClick={(e) => { this.setState({ showPanel: true }); }}>{this.props.title}</span>
-                : <a href={this.props.url} target="_blank" data-interception="off">{this.props.title}</a>}
+                ? <span onClick={(e) => { this.setState({ showPanel: true }); }}>{this.props.label || this.props.title}</span>
+                : <a href={this.props.url} target="_blank" data-interception="off">{this.props.label || this.props.title}</a>}
             
             <Panel
                 headerText={this.props.title}

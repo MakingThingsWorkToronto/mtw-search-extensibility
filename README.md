@@ -39,6 +39,20 @@ Add the .sppkg to your App Catalog and deploy to all site collections.
 
 Debugging: create a debug build and use gulp serve locally.
 
+# Page Title 
+Web Component sets the title of the page to a custom value.
+
+## Usage
+Add the web component directly in handlebars template using the following HTML tag:
+```html
+<mtw-page-title data-title="{{Title}}"></mtw-page-title>
+```
+
+## Attributes
+
+### data-title
+The text you would like to set as the page title
+
 
 # Client App Link
 Web Component allows search developers to create a hyperlink that opens the document within the native Office application. Should no native office application be found a standard http hyperlink will be created.
@@ -165,6 +179,9 @@ Add the web component directly in handlebars template using the following HTML t
 <mtw-sidepanel data-title="{{Title}}" data-url="{{getUrl item}}" data-position="custom|customNear|extraLarge|large|largeFixed|medium|smallFixedFar|smallFixedNear|smallFluid" data-size="100px|10rem|40%|etc." data-new-window="true|false" ></mtw-sidepanel>
 ```
 ## Attributes
+
+#### data-label
+Contains text appearing in hyperlink that opens the side panel
 
 #### data-title
 Contains text appearing in header of the side panel

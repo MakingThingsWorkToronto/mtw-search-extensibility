@@ -8,6 +8,7 @@ import { SidePanelTemplateWebComponent } from "../../components/SidePanelTemplat
 import { FlowButtonWebComponent } from "../../components/FlowButtonComponent/FlowButtonComponent";
 import { IComponentDefinition } from "../../models/IComponentDefinition";
 import { ClientAppLinkWebComponent, ClientAppComponent } from "../../components/ClientAppLinkComponent/ClientAppLinkComponent";
+import { PageTitleWebComponent } from "../../components/PageTitleComponent/PageTitleComponent";
 
 export class MTWExtensibilityLibrary {
 
@@ -49,6 +50,10 @@ export class MTWExtensibilityLibrary {
       {
         componentName: 'mtw-flow-button',
         componentClass: FlowButtonWebComponent
+      },
+      {
+        componentName: 'mtw-page-title',
+        componentClass: PageTitleWebComponent
       }
     ];
   }
