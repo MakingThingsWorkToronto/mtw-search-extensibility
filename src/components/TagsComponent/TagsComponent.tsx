@@ -1,6 +1,6 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
-import { BaseWebComponent } from '../../models/BaseWebComponent';
+import { BaseWebComponent,IRefinementFilter, IRefinementValue, RefinementOperator } from 'search-extensibility';
 import { IconButton, IButtonStyles } from 'office-ui-fabric-react/lib/Button';
 import { Link } from 'office-ui-fabric-react/lib/Link';
 import { IOverflowSetItemProps, OverflowSet } from 'office-ui-fabric-react/lib/OverflowSet';
@@ -9,7 +9,6 @@ import { Icon } from 'office-ui-fabric-react/lib/Icon';
 import { values, initializeIcons, Label } from 'office-ui-fabric-react';
 import { SearchHelper } from '../../helper/SearchHelper';
 import { UrlHelper } from '../../helper/UrlHelper';
-import { IRefinementFilter, IRefinementValue, RefinementOperator } from "../../models/ISearchResult";
 import { cloneDeep } from '@microsoft/sp-lodash-subset';
 
 export interface ITagsComponentProps {

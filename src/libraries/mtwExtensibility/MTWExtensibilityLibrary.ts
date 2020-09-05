@@ -1,49 +1,69 @@
-import { IExtensibilityLibrary } from "../../models/IExtensibilityLibrary";
+import { IExtension, ModernSearchExtensibilityLibrary } from "search-extensibility";
 import { SidePanelComponentWebComponent } from "../../components/SidePanelComponent/SidePanelComponent";
 import { TagsComponentWebComponent } from "../../components/TagsComponent/TagsComponent";
 import { PersonComponentWebComponent } from "../../components/PersonComponent/PersonComponent";
 import { IconComponentWebComponent } from "../../components/IconComponent/IconComponent";
 import { URLComponentWebComponent } from "../../components/URLComponent/URLComponent";
 import { SidePanelTemplateWebComponent } from "../../components/SidePanelTemplateComponent/SidePanelTemplateComponent";
-import { IComponentDefinition } from "../../models/IComponentDefinition";
 import { ClientAppLinkComponentWebComponent } from "../../components/ClientAppLinkComponent/ClientAppComponent";
+import * as strings from 'MTWExtensibilityLibraryStrings';
 
-export class MTWExtensibilityLibrary {
+export class MTWExtensibilityLibrary extends ModernSearchExtensibilityLibrary {
 
-  public name(): string {
-    return 'MTWExtensibilityLibrary';
+  public name: string = strings.LibraryName;
+  public description: string = strings.LibraryDescription;
+  public icon: string = "WaitlistConfirm";
 
-  }
-
-  public getCustomWebComponents(): IComponentDefinition<any>[] {
+  public getExtensions(): IExtension<any>[] {
     return [
       {
-        componentName: 'mtw-sidepanel',
-        componentClass: SidePanelComponentWebComponent
+        name: 'mtw-sidepanel',
+        displayName: strings.Extensions.SidePanel.displayName,
+        description: strings.Extensions.SidePanel.description,
+        icon: "OpenPane",
+        extensionClass: SidePanelComponentWebComponent
       },
       {
-        componentName: 'mtw-sidepanel-template',
-        componentClass: SidePanelTemplateWebComponent
+        name: 'mtw-sidepanel-template',
+        displayName: strings.Extensions.SidePanelTemplate.displayName,
+        description: strings.Extensions.SidePanelTemplate.description,
+        icon: "ClosePane",
+        extensionClass: SidePanelTemplateWebComponent
       },
       {
-        componentName: 'mtw-tags',
-        componentClass: TagsComponentWebComponent
+        name: 'mtw-tags',
+        displayName: strings.Extensions.Tags.displayName,
+        description: strings.Extensions.Tags.description,
+        icon: "Tag",
+        extensionClass: TagsComponentWebComponent
       },
       {
-        componentName: 'mtw-person',
-        componentClass: PersonComponentWebComponent
+        name: 'mtw-person',
+        displayName: strings.Extensions.Person.displayName,
+        description: strings.Extensions.Person.description,
+        icon: "Contact",
+        extensionClass: PersonComponentWebComponent
       },
       {
-        componentName: 'mtw-icon',
-        componentClass: IconComponentWebComponent
+        name: 'mtw-icon',
+        displayName: strings.Extensions.Icon.displayName,
+        description: strings.Extensions.Icon.description,
+        icon: "IconSetsFlag",
+        extensionClass: IconComponentWebComponent
       },
       {
-        componentName: 'mtw-url',
-        componentClass: URLComponentWebComponent
+        name: 'mtw-url',
+        displayName: strings.Extensions.Url.displayName,
+        description: strings.Extensions.Url.description,
+        icon: "Link",
+        extensionClass: URLComponentWebComponent
       },
       {
-        componentName: 'mtw-clientapp-link',
-        componentClass: ClientAppLinkComponentWebComponent
+        name: 'mtw-clientapp-link',
+        displayName: strings.Extensions.ClientAppLink.displayName,
+        description: strings.Extensions.ClientAppLink.description,
+        icon: "WordDocument",
+        extensionClass: ClientAppLinkComponentWebComponent
       }
     ];
   }

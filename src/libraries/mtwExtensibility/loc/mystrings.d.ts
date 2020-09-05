@@ -1,7 +1,36 @@
 declare interface IMTWExtensibilityLibraryStrings {
-  PropertyPaneDescription: string;
-  BasicGroupName: string;
-  DescriptionFieldLabel: string;
+  LibraryName: string;
+  LibraryDescription: string;
+  Extensions: {
+    SidePanel: {
+      displayName: string;
+      description: string;
+    },
+    SidePanelTemplate: {
+      displayName: string;
+      description: string;
+    },
+    Tags: {
+      displayName: string;
+      description: string;
+    },
+    Person: {
+      displayName: string;
+      description: string;
+    },
+    Icon: {
+      displayName: string;
+      description: string;
+    },
+    Url: {
+      displayName: string;
+      description: string;
+    },
+    ClientAppLink: {
+      displayName: string;
+      description: string;
+    }
+  }
 }
 
 declare module 'MTWExtensibilityLibraryStrings' {
