@@ -70,7 +70,7 @@ export class IconComponent extends React.Component<IIconComponentProps, IIconCom
 
 }
 
-export class IconComponentWebComponent extends BaseWebComponent {
+export class IconWebComponent extends BaseWebComponent {
    
     public constructor() {
         super(); 

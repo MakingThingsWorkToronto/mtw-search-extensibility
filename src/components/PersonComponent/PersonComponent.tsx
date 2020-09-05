@@ -186,7 +186,7 @@ export class PersonComponent extends React.Component<IPersonComponentProps, IPer
 
 }
 
-export class PersonComponentWebComponent extends BaseWebComponent {
+export class PersonWebComponent extends BaseWebComponent {
    
     public constructor() {
         super(); 

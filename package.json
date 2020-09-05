@@ -19,6 +19,7 @@
     "@microsoft/sp-page-context": "1.11.0",
     "@microsoft/sp-property-pane": "1.11.0",
     "@microsoft/sp-webpart-base": "1.11.0",
+    "@uifabric/file-type-icons": "^7.6.1",
     "office-ui-fabric-react": "6.214.0",
     "react": "16.8.5",
     "react-dom": "16.8.5",

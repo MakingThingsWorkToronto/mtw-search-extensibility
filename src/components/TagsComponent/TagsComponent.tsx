@@ -238,7 +238,7 @@ export class TagsComponent extends React.Component<ITagsComponentProps, ITagsCom
 
 }
 
-export class TagsComponentWebComponent extends BaseWebComponent {
+export class TagsWebComponent extends BaseWebComponent {
    
     public constructor() {
         super(); 

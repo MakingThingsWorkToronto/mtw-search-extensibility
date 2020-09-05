@@ -146,7 +146,7 @@ export class SidePanelComponent extends React.Component<ISidePanelComponentProps
     }
 }
 
-export class SidePanelComponentWebComponent extends BaseWebComponent {
+export class SidePanelWebComponent extends BaseWebComponent {
    
     public constructor() {
         super(); 

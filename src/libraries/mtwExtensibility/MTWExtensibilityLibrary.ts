@@ -1,12 +1,14 @@
 import { IExtension, ModernSearchExtensibilityLibrary } from "search-extensibility";
-import { SidePanelComponentWebComponent } from "../../components/SidePanelComponent/SidePanelComponent";
-import { TagsComponentWebComponent } from "../../components/TagsComponent/TagsComponent";
-import { PersonComponentWebComponent } from "../../components/PersonComponent/PersonComponent";
-import { IconComponentWebComponent } from "../../components/IconComponent/IconComponent";
-import { URLComponentWebComponent } from "../../components/URLComponent/URLComponent";
+
 import { SidePanelTemplateWebComponent } from "../../components/SidePanelTemplateComponent/SidePanelTemplateComponent";
-import { ClientAppLinkComponentWebComponent } from "../../components/ClientAppLinkComponent/ClientAppComponent";
+import { FlowButtonWebComponent } from "../../components/FlowButtonComponent/FlowButtonComponent";
 import * as strings from 'MTWExtensibilityLibraryStrings';
+import { SidePanelWebComponent } from "../../components/SidePanelComponent/SidePanelComponent";
+import { TagsWebComponent } from "../../components/TagsComponent/TagsComponent";
+import { PersonWebComponent } from "../../components/PersonComponent/PersonComponent";
+import { IconWebComponent } from "../../components/IconComponent/IconComponent";
+import { URLWebComponent } from "../../components/URLComponent/URLComponent";
+import { ClientAppLinkWebComponent } from "../../components/ClientAppLinkComponent/ClientAppLinkComponent";
 
 export class MTWExtensibilityLibrary extends ModernSearchExtensibilityLibrary {
 
@@ -21,7 +23,7 @@ export class MTWExtensibilityLibrary extends ModernSearchExtensibilityLibrary {
         displayName: strings.Extensions.SidePanel.displayName,
         description: strings.Extensions.SidePanel.description,
         icon: "OpenPane",
-        extensionClass: SidePanelComponentWebComponent
+        extensionClass: SidePanelWebComponent
       },
       {
         name: 'mtw-sidepanel-template',
@@ -35,35 +37,41 @@ export class MTWExtensibilityLibrary extends ModernSearchExtensibilityLibrary {
         displayName: strings.Extensions.Tags.displayName,
         description: strings.Extensions.Tags.description,
         icon: "Tag",
-        extensionClass: TagsComponentWebComponent
+        extensionClass: TagsWebComponent
       },
       {
         name: 'mtw-person',
         displayName: strings.Extensions.Person.displayName,
         description: strings.Extensions.Person.description,
         icon: "Contact",
-        extensionClass: PersonComponentWebComponent
+        extensionClass: PersonWebComponent
       },
       {
         name: 'mtw-icon',
         displayName: strings.Extensions.Icon.displayName,
         description: strings.Extensions.Icon.description,
         icon: "IconSetsFlag",
-        extensionClass: IconComponentWebComponent
+        extensionClass: IconWebComponent
       },
       {
         name: 'mtw-url',
         displayName: strings.Extensions.Url.displayName,
         description: strings.Extensions.Url.description,
         icon: "Link",
-        extensionClass: URLComponentWebComponent
+        extensionClass: URLWebComponent
       },
       {
         name: 'mtw-clientapp-link',
         displayName: strings.Extensions.ClientAppLink.displayName,
         description: strings.Extensions.ClientAppLink.description,
         icon: "WordDocument",
-        extensionClass: ClientAppLinkComponentWebComponent
+        extensionClass: ClientAppLinkWebComponent
+      },
+      {
+        name: 'mtw-flow-button',
+        displayName: strings.Extensions.FlowButton.displayName,
+        description: strings.Extensions.FlowButton.description,
+        extensionClass: FlowButtonWebComponent
       }
     ];
   }
