@@ -29,6 +29,10 @@ declare interface IMTWExtensibilityLibraryStrings {
     ClientAppLink: {
       displayName: string;
       description: string;
+    },
+    FlowButton: {
+      displayName: string;
+      description: string;
     }
   }
 }

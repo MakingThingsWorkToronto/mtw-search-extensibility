@@ -1,6 +1,6 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
-import { BaseWebComponent } from '../../models/BaseWebComponent';
+import { BaseWebComponent } from 'search-extensibility';
 import { ActionButton } from 'office-ui-fabric-react/lib/Button';
 import { Spinner, SpinnerSize } from 'office-ui-fabric-react/lib/Spinner';
 import { MessageBar, MessageBarType } from 'office-ui-fabric-react/lib/MessageBar';
@@ -170,7 +170,7 @@ export class FlowButtonWebComponent extends BaseWebComponent {
         
         let props = this.resolveAttributes();
         
-        props.context = this._ctx;
+        props.context = this.context;
 
         // You can use this._ctx here to access current Web Part context
         const customComponent = <FlowButtonComponent {...props}/>;

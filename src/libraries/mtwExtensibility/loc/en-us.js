@@ -30,6 +30,10 @@ define([], function() {
       "ClientAppLink": {
         "displayName": "Client App Link Component",
         "description": "Web Component presents a hyperlink to a document that opens directly in the appropriate Microsoft Office Application. Provides an icon option to open a preview of the document in a new tab."
+      },
+      "FlowButton": {
+        "displayName": "Flow Button",
+        "description": "Calls a flow by binding handlebars data."
       }
     }
   }
