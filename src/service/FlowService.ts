@@ -1,5 +1,5 @@
 import { WebPartContext } from "@microsoft/sp-webpart-base";
-import { HttpClient, IHttpClientOptions, HttpClientResponse } from '@microsoft/sp-http';
+import { HttpClient, HttpClientResponse } from '@microsoft/sp-http';
 import { IFlowResult } from "../models/IFlowResult";
 
 export default class FlowService {
@@ -12,8 +12,7 @@ export default class FlowService {
 
     public async runFlow(endpoint:string, params:any) : Promise<IFlowResult> {
         
-        return await this._context.httpClient.post(
-            endpoint,
+        return await this._context.httpClient.post(endpoint,
             HttpClient.configurations.v1, {
                 body: JSON.stringify(params),
                 headers: {
@@ -21,14 +20,14 @@ export default class FlowService {
                     "accepts": "application/json"
                 }
             }
-        ).then(async (value:HttpClientResponse) => {
+        ).then(async (value: HttpClientResponse) => {
             
             return this._processFlowResponse(value);
 
         }).catch((ex)=>{
 
             const err = ex as Error;
-            console.log("Failure registering for course: " + err.message);
+            console.log("Failure running flow: " + err.message);
             return { success: false, status: ex.message };
 
         });
@@ -39,8 +38,8 @@ export default class FlowService {
         
         const res = (await value.json()) as IFlowResult;
             
-        return typeof res["code"] != "undefined"
-            ? { success: false, status: res["message"] }
+        return typeof res["error"] != "undefined"
+            ? { success: false, status: res["error"]["code"] + ": " + res["error"]["message"] }
             : res;
 
     }

@@ -1,14 +1,16 @@
 import { IExtension, ModernSearchExtensibilityLibrary } from "search-extensibility";
 
-import { SidePanelTemplateWebComponent } from "../../components/SidePanelTemplateComponent/SidePanelTemplateComponent";
-import { FlowButtonWebComponent } from "../../components/FlowButtonComponent/FlowButtonComponent";
+import { SidePanelTemplateWebComponent } from "../../components/sidePanelTemplate/SidePanelTemplateComponent";
+import { FlowButtonWebComponent } from "../../components/flowButton/FlowButtonComponent";
 import * as strings from 'MTWExtensibilityLibraryStrings';
-import { SidePanelWebComponent } from "../../components/SidePanelComponent/SidePanelComponent";
-import { TagsWebComponent } from "../../components/TagsComponent/TagsComponent";
-import { PersonWebComponent } from "../../components/PersonComponent/PersonComponent";
-import { IconWebComponent } from "../../components/IconComponent/IconComponent";
-import { URLWebComponent } from "../../components/URLComponent/URLComponent";
-import { ClientAppLinkWebComponent } from "../../components/ClientAppLinkComponent/ClientAppLinkComponent";
+import { SidePanelWebComponent } from "../../components/sidePanel/SidePanelComponent";
+import { TagsWebComponent } from "../../components/tags/TagsComponent";
+import { PersonWebComponent } from "../../components/person/PersonComponent";
+import { IconWebComponent } from "../../components/icon/IconComponent";
+import { URLWebComponent } from "../../components/url/URLComponent";
+import { ClientAppLinkWebComponent } from "../../components/clientAppLink/ClientAppLinkComponent";
+import RatingsWebComponent from "../../components/ratings/RatingsWebComponent";
+import SharingWebComponent from "../../components/share/SharingWebComponent";
 
 export class MTWExtensibilityLibrary extends ModernSearchExtensibilityLibrary {
 
@@ -72,6 +74,20 @@ export class MTWExtensibilityLibrary extends ModernSearchExtensibilityLibrary {
         displayName: strings.Extensions.FlowButton.displayName,
         description: strings.Extensions.FlowButton.description,
         extensionClass: FlowButtonWebComponent
+      },
+      {
+        name: "mtw-rating",
+        displayName: strings.Extensions.Ratings.DisplayName,
+        description: strings.Extensions.Ratings.Description,
+        icon: "FavoriteStar",
+        extensionClass: RatingsWebComponent
+      },
+      {
+        name: "mtw-share",
+        displayName: strings.Extensions.Share.DisplayName,
+        description: strings.Extensions.Share.Description,
+        icon: "Share",
+        extensionClass: SharingWebComponent
       }
     ];
   }

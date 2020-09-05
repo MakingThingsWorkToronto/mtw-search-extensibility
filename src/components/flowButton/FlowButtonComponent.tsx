@@ -7,7 +7,7 @@ import { MessageBar, MessageBarType } from 'office-ui-fabric-react/lib/MessageBa
 import styles from './FlowButtonComponent.module.scss';
 import { values, initializeIcons, Label } from 'office-ui-fabric-react';
 import { WebPartContext } from '@microsoft/sp-webpart-base';
-import FlowService from '../../helper/FlowService';
+import FlowService from '../../service/FlowService';
 import { IFlowResult } from '../../models/IFlowResult';
 
 

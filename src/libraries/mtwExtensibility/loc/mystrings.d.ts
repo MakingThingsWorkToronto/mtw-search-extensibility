@@ -33,6 +33,18 @@ declare interface IMTWExtensibilityLibraryStrings {
     FlowButton: {
       displayName: string;
       description: string;
+    },
+    Ratings: {
+      Description: string;
+      DisplayName: string;
+    },
+    Share: {
+      Description: string;
+      DisplayName: string;
+      ShareButtonText: string;
+      ShareText: string;
+      CopiedClipboard: string;
+      CopyText:string;
     }
   }
 }

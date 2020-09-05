@@ -1,0 +1,47 @@
+.sharing {
+
+    border-radius: 20px 20px 20px 20px;
+    
+    .sharingButton {
+        border-radius: 10px 10px 10px 10px;
+        border: none;
+    }
+
+}
+
+.callout {
+    
+    max-width: 350px;
+    padding: 1rem;
+    .sharingInfoText {
+        padding-top: 1rem;
+        display: block;
+    }
+    .clipboard {
+        padding-bottom: 1rem;
+        .icon { 
+            text-align: center;
+            font-size: 4rem;
+            color: "[theme: themePrimary, default: #0078d7]";
+            display:block;
+            margin: 0.5rem auto;
+        }
+    }
+    .clipboardText {
+        display: block;
+        text-align: center;
+    }
+    .linkText {
+        max-width: 100%;
+        margin: 1rem 0.5rem 1rem 0.5rem;
+        border: 1px solid "[theme: themePrimary, default: #0078d7]"; margin: 0 auto; 
+        display:block;
+        cursor: pointer;
+        input { cursor: pointer; }
+        :global(.ms-TextField-suffix) {
+            background-color: "[theme: themePrimary, default: #0078d7]";
+            color: "[theme: white, default: #0078d7]";
+            cursor:pointer;
+        }
+    }
+}

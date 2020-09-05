@@ -34,6 +34,18 @@ define([], function() {
       "FlowButton": {
         "displayName": "Flow Button",
         "description": "Calls a flow by binding handlebars data."
+      },
+      "Ratings" : {
+        "Description": "Allows users to view and rate items in search results.",
+        "DisplayName": "Ratings"
+      },
+      "Share": {
+        "Description": "Displays a callout with a sharing hyperlink",
+        "DisplayName": "Share",
+        "ShareButtonText": "Share",
+        "ShareText": "Click on the above link to copy it to your clipboard. You can paste the link into an email or chat to share with your team member.",
+        "CopiedClipboard": "Link copied",
+        "CopyText":"Copy"
       }
     }
   }

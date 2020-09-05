@@ -1,13 +1,11 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import { BaseWebComponent } from 'search-extensibility';
-import { IconButton, IButtonStyles } from 'office-ui-fabric-react/lib/Button';
 import { Link } from 'office-ui-fabric-react/lib/Link';
-import styles from './ClientAppComponent.module.scss';
+import styles from './ClientAppLinkComponent.module.scss';
 import { Icon } from 'office-ui-fabric-react/lib/Icon';
-import { OfficeAppCommands, OfficeAppRegistrations, Office } from '../../models/OfficeAppRegistrations';
 import { initializeFileTypeIcons, getFileTypeIconProps, FileTypeIconSize } from '@uifabric/file-type-icons';
-
+import { Office } from '../../models/OfficeAppRegistrations';
 
 export interface IClientAppComponentProps {
 
