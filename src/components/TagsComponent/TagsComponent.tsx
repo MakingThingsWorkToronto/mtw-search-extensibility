@@ -150,12 +150,15 @@ export class TagsComponent extends React.Component<ITagsComponentProps, ITagsCom
         } else {
             
             // treat this as a localized field
-            const allItems = fieldValue.split(",");
+            let allItems:string[] = (fieldValue.indexOf(";")>-1) 
+                    ? fieldValue.split(";")
+                    : fieldValue.split(",");
+                
             allItems.forEach((value,index)=>{
                 let newItem = { key: 'item' + index, name: value.trim(), onClick: this.tagClicked.bind(this, value, "") };
                 (index >= nbrItems) ? overflowItems.push(newItem) : items.push(newItem);
             });
-
+            
         }
 
         return { items: items, overflowItems: overflowItems };

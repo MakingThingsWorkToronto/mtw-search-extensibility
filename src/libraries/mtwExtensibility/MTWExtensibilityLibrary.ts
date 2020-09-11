@@ -9,6 +9,7 @@ import { FlowButtonWebComponent } from "../../components/FlowButtonComponent/Flo
 import { IComponentDefinition } from "../../models/IComponentDefinition";
 import { ClientAppLinkWebComponent, ClientAppComponent } from "../../components/ClientAppLinkComponent/ClientAppLinkComponent";
 import { PageTitleWebComponent } from "../../components/PageTitleComponent/PageTitleComponent";
+import { URLLocalizerWebComponent } from "../../components/URLLocalizer/URLLocalizerComponent";
 
 export class MTWExtensibilityLibrary {
 
@@ -54,6 +55,10 @@ export class MTWExtensibilityLibrary {
       {
         componentName: 'mtw-page-title',
         componentClass: PageTitleWebComponent
+      },
+      { 
+        componentName: 'mtw-fix-url',
+        componentClass: URLLocalizerWebComponent
       }
     ];
   }
