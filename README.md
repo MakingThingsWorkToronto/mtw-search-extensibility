@@ -6,21 +6,21 @@ Tested/Supported for PnP Modern Search >3.10
 
 # All Web Components
 
-[Flow Button](#-flow-button-component)
+[Flow Button](#flow-button-component)
 
-[Sidepanel Template](#-sidepanel-template-component)
+[Sidepanel Template](#sidepanel-template-component)
 
-[Sidepanel URL](#-sidepanel-url-component)
+[Sidepanel URL](#sidepanel-url-component)
 
-[Icon](#-icon-component)
+[Icon](#icon-component)
 
-[Person](#-person-component)
+[Person](#person-component)
 
-[Tags](#-tags-component)
+[Tags](#tags-component)
 
-[URL](#-url-component)
+[URL](#url-component)
 
-[Client App Link](#-client-app-link)
+[Client App Link](#client-app-link)
 
 
 # Installing on SharePoint Online
