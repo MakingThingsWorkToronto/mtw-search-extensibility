@@ -133,6 +133,23 @@ Optional: The CSS class name that should be applied to the success message bar.
 ### data-failure-class
 Optional: The CSS class name that should be applied to the failure message bar.
 
+## Flow Responses
+This component runs a HTTP Request flow and expects the following format for response:
+
+```json
+// FAILURE RESPONSE
+{
+  "success": false,
+  "status": "Failure message goes here"
+}```
+
+```json
+// SUCCESS RESPONSE
+{
+  "success": true,
+  "status": "Success message goes here"
+}```
+
 
 
 # Sidepanel Template Component
