@@ -151,7 +151,6 @@ This component runs a HTTP Request flow and expects the following format for res
 }```
 
 
-
 # Sidepanel Template Component
 Web Component allows search developers to open a custom template in a configurable pop out side panel. Allows users to stay on the search results page and reduces the number of tabs open. 
 
