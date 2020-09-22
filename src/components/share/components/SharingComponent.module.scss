@@ -1,9 +1,12 @@
 .sharing {
 
-    border-radius: 20px 20px 20px 20px;
-    
     .sharingButton {
         border-radius: 10px 10px 10px 10px;
+        border: none;
+    }
+    
+    .sharingButtonCompact {
+        border-radius: 20px 20px 20px 20px;
         border: none;
     }
 

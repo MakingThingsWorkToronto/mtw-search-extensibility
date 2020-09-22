@@ -11,5 +11,10 @@ export interface ISharingComponentProps {
      */
     className?:string;
 
+    /**
+     * Compact view
+     */
+    compact?:boolean;
+
     
 }

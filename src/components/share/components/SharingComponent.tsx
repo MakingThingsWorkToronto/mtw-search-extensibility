@@ -3,7 +3,7 @@ import * as ReactDOM from 'react-dom';
 import * as styles from './SharingComponent.module.scss';
 import * as strings from 'MTWExtensibilityLibraryStrings';
 import { IIconProps, Icon } from 'office-ui-fabric-react/lib/Icon';
-import { PrimaryButton } from 'office-ui-fabric-react/lib/Button';
+import { IconButton, PrimaryButton } from 'office-ui-fabric-react/lib/Button';
 import { Callout } from 'office-ui-fabric-react/lib/Callout';
 import { ISharingComponentProps } from './ISharingComponentProps';
 import { ISharingComponentState } from './ISharingComponentState';
@@ -11,6 +11,7 @@ import { Text } from 'office-ui-fabric-react/lib/Text';
 import { TextField } from 'office-ui-fabric-react/lib/TextField';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
 import { convertToClassName } from '../../../helper/CssHelper';
+import { Guid } from '@microsoft/sp-core-library';
 
 export class SharingComponent extends React.Component<ISharingComponentProps, ISharingComponentState> {
     
@@ -23,14 +24,11 @@ export class SharingComponent extends React.Component<ISharingComponentProps, IS
                 ? this.props.hyperlink
                 : window.location.href,
             showSharingLink: false,
-            copiedToClipboard: false
+            copiedToClipboard: false,
+            calloutTarget: "a" + Guid.newGuid().toString().replace("-","")
         };
     }
-    
-    protected async onInit(): Promise<void> {
-        // initialize component
-    }
-        
+            
     public render() {
 
         const className = convertToClassName(this.props.className);
@@ -38,14 +36,12 @@ export class SharingComponent extends React.Component<ISharingComponentProps, IS
         const foreClassName: string = className + "-fore";
         const borderClassName: string = className + "-border";
 
+        const button = (this.props.compact === false)
+            ? <PrimaryButton id={this.state.calloutTarget} className={styles.default.sharingButton + " " + backClassName} iconProps={this._shareIcon} allowDisabledFocus onClick={this._shareLink.bind(this)}>{strings.Extensions.Share.ShareButtonText}</PrimaryButton>
+            : <IconButton id={this.state.calloutTarget} className={styles.default.sharingButtonCompact + " " + backClassName} iconProps={this._shareIcon} allowDisabledFocus onClick={this._shareLink.bind(this)}></IconButton>;
+
         return <div className={styles.default.sharing}>
-                    <PrimaryButton  
-                        className={styles.default.sharingButton + " " + backClassName}
-                        iconProps={this._shareIcon} 
-                        allowDisabledFocus 
-                        onClick={this._shareLink.bind(this)}>
-                        {strings.Extensions.Share.ShareButtonText}
-                    </PrimaryButton>
+                    {button}
                     {this._renderCallout(foreClassName, backClassName, borderClassName)}
                 </div>;
 
@@ -63,7 +59,7 @@ export class SharingComponent extends React.Component<ISharingComponentProps, IS
                 className={styles.default.callout}
                 role="alertdialog"
                 gapSpace={0}
-                target={"." + styles.default.sharingButton}
+                target={"#" + this.state.calloutTarget}
                 onDismiss={()=>{
                     this.setState({
                         showSharingLink: false

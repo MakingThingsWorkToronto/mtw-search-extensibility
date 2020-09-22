@@ -57,7 +57,7 @@ export class URLComponent extends React.Component<IURLComponentProps, IURLCompon
         super(props);
     }
     
-    protected async onInit(): Promise<void> {
+    public componentDidMount(){        
         initializeIcons();
     }
         

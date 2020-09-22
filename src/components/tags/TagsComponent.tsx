@@ -61,11 +61,11 @@ export class TagsComponent extends React.Component<ITagsComponentProps, ITagsCom
     
     constructor(props: ITagsComponentProps) {
         super(props);
+        this._currentFilters = SearchHelper.getRefinementFiltersFromUrl();
     }
     
-    protected async onInit(): Promise<void> {
+    public componentDidMount() {        
         initializeIcons();
-        this._currentFilters = SearchHelper.getRefinementFiltersFromUrl();
     }
         
     public render() {

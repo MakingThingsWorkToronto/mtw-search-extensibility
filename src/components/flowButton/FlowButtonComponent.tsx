@@ -83,7 +83,7 @@ export class FlowButtonComponent extends React.Component<IFlowButtonComponentPro
         };
     }
     
-    protected async onInit(): Promise<void> {
+    public componentDidMount(){        
         initializeIcons();
     }
         

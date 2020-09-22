@@ -3,4 +3,5 @@ export interface IRatingsComponentState {
     settingRating:boolean;
     message: string;
     error:boolean;
+    calloutTarget:string;
 }

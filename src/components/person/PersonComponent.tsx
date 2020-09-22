@@ -65,7 +65,7 @@ export class PersonComponent extends React.Component<IPersonComponentProps, IPer
         super(props);
     }
     
-    protected async onInit(): Promise<void> {
+    public componentDidMount() {        
         initializeIcons();
     }
         

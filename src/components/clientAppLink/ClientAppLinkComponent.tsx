@@ -66,7 +66,7 @@ export class ClientAppComponent extends React.Component<IClientAppComponentProps
         super(props);
     }
     
-    protected async onInit(): Promise<void> {
+    public componentDidMount(){        
         initializeFileTypeIcons();
     }
         

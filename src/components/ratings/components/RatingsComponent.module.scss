@@ -3,5 +3,28 @@
     border-radius: 10px 10px 10px 10px;
     display: inline-block; 
     padding: 0 0.75rem 0 0.75rem;
+
+    .callout {
+        max-width: 300px;
+        :global(.ms-Callout-beak) {
+            background-color: #fff;
+        }
+        :global(.ms-Callout-main) {
+            background-color: #fff;
+            padding: 1rem;
+        }
+    }
     
+    .callout.error {
+        border: 1px solid red;
+        box-shadow: red 0px 0px 5px 0px;
+        background-color: "[theme:errorBackground, default:rgba(232, 17, 35, .2)]";
+        :global(.ms-Callout-beak) { 
+            background-color: "[theme:errorBackground, default:rgba(232, 17, 35, .2)]";
+        }
+        :global(.ms-Callout-main) {
+            background-color: "[theme:errorBackground, default:rgba(232, 17, 35, .2)]";
+        }
+    }
+
 }

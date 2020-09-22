@@ -11,6 +11,7 @@ import { URLWebComponent } from "../../components/url/URLComponent";
 import { ClientAppLinkWebComponent } from "../../components/clientAppLink/ClientAppLinkComponent";
 import RatingsWebComponent from "../../components/ratings/RatingsWebComponent";
 import SharingWebComponent from "../../components/share/SharingWebComponent";
+import { StylesheetWebComponent } from "../../components/stylesheet/StylesheetComponent";
 
 export class MTWExtensibilityLibrary extends ModernSearchExtensibilityLibrary {
 
@@ -88,6 +89,13 @@ export class MTWExtensibilityLibrary extends ModernSearchExtensibilityLibrary {
         description: strings.Extensions.Share.Description,
         icon: "Share",
         extensionClass: SharingWebComponent
+      },
+      {
+        name: "mtw-stylesheet",
+        displayName: strings.Extensions.Stylesheet.DisplayName,
+        description: strings.Extensions.Stylesheet.Description,
+        icon: "EditStyle",
+        extensionClass: StylesheetWebComponent
       }
     ];
   }

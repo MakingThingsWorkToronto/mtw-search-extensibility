@@ -21,7 +21,7 @@ export default class FlowService {
                 }
             }
         ).then(async (value: HttpClientResponse) => {
-            
+
             return this._processFlowResponse(value);
 
         }).catch((ex)=>{
@@ -36,11 +36,19 @@ export default class FlowService {
 
     private async _processFlowResponse(value:HttpClientResponse) {
         
-        const res = (await value.json()) as IFlowResult;
-            
-        return typeof res["error"] != "undefined"
-            ? { success: false, status: res["error"]["code"] + ": " + res["error"]["message"] }
-            : res;
+        if(value.status === 200) {
+
+            const res = (await value.json()) as IFlowResult;
+                
+            return typeof res["error"] != "undefined"
+                ? { success: false, status: res["error"]["code"] + ": " + res["error"]["message"] }
+                : res;
+        
+        } else {
+
+            return { success: false, status: value.status + (value.statusText ? ": " + value.statusText : "") };
+
+        }
 
     }
 

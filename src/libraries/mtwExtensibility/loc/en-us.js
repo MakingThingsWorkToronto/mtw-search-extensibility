@@ -37,7 +37,14 @@ define([], function() {
       },
       "Ratings" : {
         "Description": "Allows users to view and rate items in search results.",
-        "DisplayName": "Ratings"
+        "DisplayName": "Ratings",
+        "ResponseCodes": {
+          "CANTFINDUSER":"Can't find username in site. To rate this item please visit the site before rating.",
+          "USERNOTINSITE":"Username is not in site. To rate this item please visit the site before rating.",
+          "CANTFINDITEM":"Can't find the list item to be rated. Please contact the system administrator.",
+          "RATINGSAVED":"Thanks for rating! It may take several minutes for the rating to appear. Please be patient.",
+          "ALREADYRATED":"You've already rated this item. Rating was not saved as we only allow one rating per user."
+        }
       },
       "Share": {
         "Description": "Displays a callout with a sharing hyperlink",
@@ -46,6 +53,10 @@ define([], function() {
         "ShareText": "Click on the above link to copy it to your clipboard. You can paste the link into an email or chat to share with your team member.",
         "CopiedClipboard": "Link copied",
         "CopyText":"Copy"
+      },
+      "Stylesheet": {
+        "Description": "Renders an external stylesheet in the browser",
+        "DisplayName": "Stylesheet"
       }
     }
   }

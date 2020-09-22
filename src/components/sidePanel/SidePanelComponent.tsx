@@ -32,6 +32,11 @@ export interface ISidePanelComponentProps {
      */
     newWindow?:boolean;
 
+    /**
+     * Link class name
+     */
+    linkClassName?:string;
+
 }
 
 export interface ISidePanelComponentState {
@@ -55,7 +60,7 @@ export class SidePanelComponent extends React.Component<ISidePanelComponentProps
     public render() {
         const currentDomain = window.location.protocol + "//" + window.location.host;
         const sameDomain = this.props.url && this.props.url.length > 0 
-                                ? this.props.url.indexOf(currentDomain) == 0
+                                ? this.props.url.indexOf(currentDomain) == 0 || this.props.url.indexOf("/") == 0
                                 : false;
         const panelTypeSize = this.getPanelTypeSize();
         const openInNewWindow = this.props.newWindow === true
@@ -65,8 +70,8 @@ export class SidePanelComponent extends React.Component<ISidePanelComponentProps
         return <div className={styles.sidePanelLink}>
             {openInNewWindow}
             {sameDomain 
-                ? <span onClick={(e) => { this.setState({ showPanel: true }); }}>{this.props.title}</span>
-                : <a href={this.props.url} target="_blank" data-interception="off">{this.props.title}</a>}
+                ? <span onClick={(e) => { this.setState({ showPanel: true }); }} className={this.props.linkClassName}>{this.props.title}</span>
+                : <a href={this.props.url} target="_blank" data-interception="off" className={this.props.linkClassName}>{this.props.title}</a>}
             
             <Panel
                 headerText={this.props.title}

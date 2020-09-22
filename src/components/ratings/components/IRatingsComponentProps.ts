@@ -4,7 +4,7 @@ export interface IRatingsComponentProps {
 
     siteUrl?: string;
 
-    itemId?:string;
+    itemId?:number;
 
     listId?:string;
 

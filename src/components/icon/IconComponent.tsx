@@ -39,7 +39,7 @@ export class IconComponent extends React.Component<IIconComponentProps, IIconCom
         super(props);
     }
     
-    protected async onInit(): Promise<void> {
+    public componentDidMount() {        
         initializeIcons();
     }
         

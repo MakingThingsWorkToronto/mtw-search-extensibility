@@ -37,6 +37,13 @@ declare interface IMTWExtensibilityLibraryStrings {
     Ratings: {
       Description: string;
       DisplayName: string;
+      ResponseCodes: {
+        CANTFINDUSER: string;
+        USERNOTINSITE: string;
+        CANTFINDITEM: string;
+        RATINGSAVED: string;
+        ALREADYRATED: string;
+      }
     },
     Share: {
       Description: string;
@@ -45,6 +52,10 @@ declare interface IMTWExtensibilityLibraryStrings {
       ShareText: string;
       CopiedClipboard: string;
       CopyText:string;
+    },
+    Stylesheet: {
+      Description: string;
+      DisplayName: string;
     }
   }
 }
