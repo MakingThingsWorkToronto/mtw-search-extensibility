@@ -1,14 +1,13 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import { BaseWebComponent } from 'search-extensibility';
-import { IconButton, IButtonStyles } from 'office-ui-fabric-react/lib/Button';
-import { Link } from 'office-ui-fabric-react/lib/Link';
-import { IOverflowSetItemProps, OverflowSet } from 'office-ui-fabric-react/lib/OverflowSet';
+import { IconButton } from '@fluentui/react/lib/Button';
+import { Link } from '@fluentui/react/lib/Link';
+import { IOverflowSetItemProps, OverflowSet } from '@fluentui/react/lib/OverflowSet';
 import styles from './PersonComponent.module.scss';
-import { Icon } from 'office-ui-fabric-react/lib/Icon';
-import { values, initializeIcons, Label } from 'office-ui-fabric-react';
-
-
+import { Icon } from '@fluentui/react/lib/Icon';
+import { initializeIcons } from '@fluentui/react/lib/Icons';
+import { Label } from '@fluentui/react/lib/Label';
 
 export interface IPersonComponentProps {
 

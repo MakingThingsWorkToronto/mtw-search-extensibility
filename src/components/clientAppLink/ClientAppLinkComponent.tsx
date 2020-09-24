@@ -1,9 +1,9 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import { BaseWebComponent } from 'search-extensibility';
-import { Link } from 'office-ui-fabric-react/lib/Link';
+import { Link } from '@fluentui/react/lib/Link';
 import styles from './ClientAppLinkComponent.module.scss';
-import { Icon } from 'office-ui-fabric-react/lib/Icon';
+import { Icon } from '@fluentui/react/lib/Icon';
 import { initializeFileTypeIcons, getFileTypeIconProps, FileTypeIconSize } from '@uifabric/file-type-icons';
 import { Office } from '../../models/OfficeAppRegistrations';
 

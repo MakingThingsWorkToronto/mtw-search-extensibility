@@ -2,15 +2,15 @@ import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import * as styles from './RatingsComponent.module.scss';
 import * as strings from 'MTWExtensibilityLibraryStrings';
-import { Rating, RatingSize } from 'office-ui-fabric-react/lib/Rating';
-import { Spinner, SpinnerSize } from 'office-ui-fabric-react/lib/Spinner';
+import { Rating, RatingSize } from '@fluentui/react/lib/Rating';
+import { Spinner, SpinnerSize } from '@fluentui/react/lib/Spinner';
 import { IRatingsComponentProps } from './IRatingsComponentProps';
 import { IRatingsComponentState } from './IRatingsComponentState';
 import { convertToClassName } from '../../../helper/CssHelper';
 import FlowService from '../../../service/FlowService';
 import { IFlowResult } from '../../../models/IFlowResult';
-import { Callout } from 'office-ui-fabric-react/lib/Callout';
-import { Text } from 'office-ui-fabric-react/lib/Text';
+import { Callout } from '@fluentui/react/lib/Callout';
+import { Text } from '@fluentui/react/lib/Text';
 import { Guid } from '@microsoft/sp-core-library';
 
 interface IRatingFlowResult extends IFlowResult {

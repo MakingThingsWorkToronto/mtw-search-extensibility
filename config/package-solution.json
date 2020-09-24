@@ -3,17 +3,10 @@
   "solution": {
     "name": "MTW Search Extensibility",
     "id": "11d5b9ec-7d64-4cf6-884d-c8fd4e510db2",
-    "version": "1.0.0.1",
+    "version": "1.0.2.0",
     "includeClientSideAssets": true,
     "skipFeatureDeployment": true,
-    "isDomainIsolated": false,
-    "developer": {
-      "name": "Contoso",
-      "privacyUrl": "https://contoso.com/privacy",
-      "termsOfUseUrl": "https://contoso.com/terms-of-use",
-      "websiteUrl": "https://contoso.com/my-app",
-      "mpnId": "000000"
-    }
+    "isDomainIsolated": false
   },
   "paths": {
     "zippedPackage": "solution/mtw-extensibility.sppkg"

@@ -1,14 +1,13 @@
 import * as React from 'react';
-import * as ReactDOM from 'react-dom';
 import * as styles from './SharingComponent.module.scss';
 import * as strings from 'MTWExtensibilityLibraryStrings';
-import { IIconProps, Icon } from 'office-ui-fabric-react/lib/Icon';
-import { IconButton, PrimaryButton } from 'office-ui-fabric-react/lib/Button';
-import { Callout } from 'office-ui-fabric-react/lib/Callout';
+import { IIconProps, Icon } from '@fluentui/react/lib/Icon';
+import { IconButton, PrimaryButton } from '@fluentui/react/lib/Button';
+import { Callout } from '@fluentui/react/lib/Callout';
 import { ISharingComponentProps } from './ISharingComponentProps';
 import { ISharingComponentState } from './ISharingComponentState';
-import { Text } from 'office-ui-fabric-react/lib/Text';
-import { TextField } from 'office-ui-fabric-react/lib/TextField';
+import { Text } from '@fluentui/react/lib/Text';
+import { TextField } from '@fluentui/react/lib/TextField';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
 import { convertToClassName } from '../../../helper/CssHelper';
 import { Guid } from '@microsoft/sp-core-library';
@@ -69,17 +68,17 @@ export class SharingComponent extends React.Component<ISharingComponentProps, IS
                     {this.state.copiedToClipboard
                         ? <div className={styles.default.clipboard}>
                             <Icon iconName="SkypeCircleCheck" className={styles.default.icon + " " + foreClassName}></Icon>
-                            <Text variant={'large'} className={styles.default.clipboardText}>{strings.Extensions.Share.CopiedClipboard}</Text>
+                                <Text variant={'large'} className={styles.default.clipboardText}>{strings.Extensions.Share.CopiedClipboard}</Text>
+                            
                           </div>
                         : null
                     }
                     <CopyToClipboard text={this.state.sharingLink} onCopy={() => {this.setState({copiedToClipboard: true});}}>
-                        <TextField className={styles.default.linkText + " " + borderClassName} suffix={strings.Extensions.Share.CopyText} value={this.state.sharingLink}></TextField>
+                        <TextField className={styles.default.linkText + " " + borderClassName} suffix={strings.Extensions.Share.CopyText} value={this.state.sharingLink}></TextField>  
                     </CopyToClipboard>
                     <Text variant={'smallPlus'} className={styles.default.sharingInfoText}>{strings.Extensions.Share.ShareText}</Text>
                 </Callout>
             : null;
     }
-
 
 }

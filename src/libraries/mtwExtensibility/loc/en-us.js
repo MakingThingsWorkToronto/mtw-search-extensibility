@@ -1,6 +1,6 @@
 define([], function() {
   return {
-    "LibraryName": "Making Things Work Search Extensibility Library",
+    "LibraryName": "Making Things Work Search Extensibility Library - 1.0.2",
     "LibraryDescription": "Collection of useful search extensibility web components that make generating handlebars templates easier.",
     "Extensions" : {
       "SidePanel": {

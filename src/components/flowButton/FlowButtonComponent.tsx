@@ -1,11 +1,11 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import { BaseWebComponent } from 'search-extensibility';
-import { ActionButton } from 'office-ui-fabric-react/lib/Button';
-import { Spinner, SpinnerSize } from 'office-ui-fabric-react/lib/Spinner';
-import { MessageBar, MessageBarType } from 'office-ui-fabric-react/lib/MessageBar';
+import { ActionButton } from '@fluentui/react/lib/Button';
+import { Spinner, SpinnerSize } from '@fluentui/react/lib/Spinner';
+import { MessageBar, MessageBarType } from '@fluentui/react/lib/MessageBar';
 import styles from './FlowButtonComponent.module.scss';
-import { values, initializeIcons, Label } from 'office-ui-fabric-react';
+import { initializeIcons } from '@fluentui/react/lib/Icons';
 import { WebPartContext } from '@microsoft/sp-webpart-base';
 import FlowService from '../../service/FlowService';
 import { IFlowResult } from '../../models/IFlowResult';

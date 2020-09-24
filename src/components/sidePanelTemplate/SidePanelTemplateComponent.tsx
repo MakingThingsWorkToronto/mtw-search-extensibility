@@ -1,9 +1,8 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import { BaseWebComponent } from 'search-extensibility';
-import { Panel, PanelType, Link } from "office-ui-fabric-react";
+import { Panel, PanelType } from "@fluentui/react/lib/Panel";
 import styles from './SidePanelTemplateComponent.module.scss';
-import { Icon } from 'office-ui-fabric-react/lib/Icon';
 
 export interface ISidePanelTemplateComponentProps {
 
