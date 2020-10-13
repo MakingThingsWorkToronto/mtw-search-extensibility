@@ -7,8 +7,8 @@ import { MessageBar, MessageBarType } from '@fluentui/react/lib/MessageBar';
 import styles from './FlowButtonComponent.module.scss';
 import { initializeIcons } from '@fluentui/react/lib/Icons';
 import { WebPartContext } from '@microsoft/sp-webpart-base';
-import FlowService from '../../service/FlowService';
-import { IFlowResult } from '../../models/IFlowResult';
+import FlowService from '../../../service/FlowService';
+import { IFlowResult } from '../../../models/IFlowResult';
 
 
 export interface IFlowButtonComponentProps {

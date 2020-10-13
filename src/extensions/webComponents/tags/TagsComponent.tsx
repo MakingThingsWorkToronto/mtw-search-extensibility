@@ -8,8 +8,8 @@ import styles from './TagsComponent.module.scss';
 import { Icon } from '@fluentui/react/lib/Icon';
 import { initializeIcons} from '@fluentui/react/lib/Icons';
 import { Label } from '@fluentui/react/lib/Label';
-import { SearchHelper } from '../../helper/SearchHelper';
-import { UrlHelper } from '../../helper/UrlHelper';
+import { SearchHelper } from '../../../helper/SearchHelper';
+import { UrlHelper } from '../../../helper/UrlHelper';
 import { cloneDeep } from '@microsoft/sp-lodash-subset';
 
 export interface ITagsComponentProps {

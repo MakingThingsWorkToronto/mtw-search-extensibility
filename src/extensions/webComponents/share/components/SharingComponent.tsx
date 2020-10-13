@@ -9,7 +9,7 @@ import { ISharingComponentState } from './ISharingComponentState';
 import { Text } from '@fluentui/react/lib/Text';
 import { TextField } from '@fluentui/react/lib/TextField';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
-import { convertToClassName } from '../../../helper/CssHelper';
+import { convertToClassName } from '../../../../helper/CssHelper';
 import { Guid } from '@microsoft/sp-core-library';
 
 export class SharingComponent extends React.Component<ISharingComponentProps, ISharingComponentState> {

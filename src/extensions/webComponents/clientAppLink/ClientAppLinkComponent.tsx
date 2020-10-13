@@ -5,7 +5,7 @@ import { Link } from '@fluentui/react/lib/Link';
 import styles from './ClientAppLinkComponent.module.scss';
 import { Icon } from '@fluentui/react/lib/Icon';
 import { initializeFileTypeIcons, getFileTypeIconProps, FileTypeIconSize } from '@uifabric/file-type-icons';
-import { Office } from '../../models/OfficeAppRegistrations';
+import { Office } from '../../../models/OfficeAppRegistrations';
 
 export interface IClientAppComponentProps {
 
