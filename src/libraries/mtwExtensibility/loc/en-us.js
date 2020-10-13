@@ -57,6 +57,10 @@ define([], function() {
       "Stylesheet": {
         "Description": "Renders an external stylesheet in the browser",
         "DisplayName": "Stylesheet"
+      }, 
+      "PageTitle": {
+        "DisplayName": "Page Title",
+        "Description": "Updates any html element text when results are rendered. Use selector property to customize text that is updated."
       }
     }
   }

@@ -56,6 +56,10 @@ declare interface IMTWExtensibilityLibraryStrings {
     Stylesheet: {
       Description: string;
       DisplayName: string;
+    },
+    PageTitle: {
+      Description: string;
+      DisplayName: string;
     }
   }
 }

@@ -12,6 +12,7 @@ import { ClientAppLinkWebComponent } from "../../components/clientAppLink/Client
 import RatingsWebComponent from "../../components/ratings/RatingsWebComponent";
 import SharingWebComponent from "../../components/share/SharingWebComponent";
 import { StylesheetWebComponent } from "../../components/stylesheet/StylesheetComponent";
+import { PageTitleWebComponent } from "../../components/pageTitle/PageTitleComponent";
 
 export class MTWExtensibilityLibrary extends ModernSearchExtensibilityLibrary {
 
@@ -96,6 +97,13 @@ export class MTWExtensibilityLibrary extends ModernSearchExtensibilityLibrary {
         description: strings.Extensions.Stylesheet.Description,
         icon: "EditStyle",
         extensionClass: StylesheetWebComponent
+      },
+      {
+        name: "mtw-page-title",
+        displayName: strings.Extensions.PageTitle.DisplayName,
+        description: strings.Extensions.PageTitle.Description,
+        icon: "InsertTextBox",
+        extensionClass: PageTitleWebComponent
       }
     ];
   }
