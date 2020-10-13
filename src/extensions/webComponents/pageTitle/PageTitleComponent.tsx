@@ -47,7 +47,7 @@ export class PageTitleComponent extends React.Component<IPageTitleComponentProps
                 this._originalTitle = ps.textContent;
                 ps.textContent = document.title = this.props.title;
             } else {
-                console.log("Query selector not returning any results.");
+                console.log("PageTitleComponent: Query selector not returning any results.");
             }
         }
 
