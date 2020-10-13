@@ -131,7 +131,7 @@ export class RatingsComponent extends React.Component<IRatingsComponentProps, IR
     }
 
     private getMessageForResponseCode(responseCode:string):string {
-        const responseCodes = strings.Extensions.Ratings.ResponseCodes;
+        const responseCodes = strings.WebComponents.Ratings.ResponseCodes;
         const message = responseCodes[responseCode];
         return message ? message : responseCode;
     }

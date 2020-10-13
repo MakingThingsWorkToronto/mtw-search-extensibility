@@ -2,7 +2,7 @@ define([], function() {
   return {
     "LibraryName": "Making Things Work Search Extensibility Library - 1.0.2",
     "LibraryDescription": "Collection of useful search extensibility web components that make generating handlebars templates easier.",
-    "Extensions" : {
+    "WebComponents" : {
       "SidePanel": {
         "displayName": "Sidepanel URL Component",
         "description": "Web Component allows search developers to open search results in a configurable pop out side panel. Allows users to stay on the search results page and reduces the number of tabs open. Only URLs in the current domain may be displayed in the side panel. If the URL is in a different domain it will open in a new tab."

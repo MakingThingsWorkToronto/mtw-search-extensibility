@@ -13,6 +13,6 @@
   },
   "externals": {},
   "localizedResources": {
-    "MTWExtensibilityLibraryStrings": "lib/libraries/mtwExtensibility/loc/{locale}.js"
+    "MTWExtensibilityLibraryStrings": "lib/loc/{locale}.js"
   }
 }

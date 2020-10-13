@@ -1,7 +1,7 @@
 declare interface IMTWExtensibilityLibraryStrings {
   LibraryName: string;
   LibraryDescription: string;
-  Extensions: {
+  WebComponents: {
     SidePanel: {
       displayName: string;
       description: string;
