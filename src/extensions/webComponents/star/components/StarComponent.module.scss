@@ -1,0 +1,16 @@
+.starComponent {
+    border-radius: 15px 15px 15px 15px;
+    height: 30px;
+    width: 30px;
+    position: absolute;
+    top: 0.5rem; right: 0.5rem;
+    background-color: #fff;
+    i {
+        font-size: 20px;
+        margin: 0.25rem auto;
+        text-align: center;
+        display: block;
+        background: none !important;
+        width: 20px;
+    }
+}

@@ -1,25 +1,45 @@
-import { IExtensibilityLibrary } from "../../models/IExtensibilityLibrary";
-import { SidePanelWebComponent } from "../../components/SidePanelComponent/SidePanelComponent";
-import { TagsWebComponent } from "../../components/TagsComponent/TagsComponent";
-import { PersonWebComponent } from "../../components/PersonComponent/PersonComponent";
-import { IconWebComponent } from "../../components/IconComponent/IconComponent";
-import { URLWebComponent } from "../../components/URLComponent/URLComponent";
-import { SidePanelTemplateWebComponent } from "../../components/SidePanelTemplateComponent/SidePanelTemplateComponent";
-import { FlowButtonWebComponent } from "../../components/FlowButtonComponent/FlowButtonComponent";
-import { IComponentDefinition } from "../../models/IComponentDefinition";
-import { ClientAppLinkWebComponent, ClientAppComponent } from "../../components/ClientAppLinkComponent/ClientAppLinkComponent";
-import { PageTitleWebComponent } from "../../components/PageTitleComponent/PageTitleComponent";
-import { URLLocalizerWebComponent } from "../../components/URLLocalizer/URLLocalizerComponent";
+import * as strings from 'MTWExtensibilityLibraryStrings';
+import PageHeaderWebComponent from '../../extensions/webComponents/pageHeader/PageHeaderWebComponent';
+import StreamWebComponent from '../../extensions/webComponents/stream/StreamWebComponent';
+import RegisterWebComponent from '../../extensions/webComponents/register/RegisterWebComponent';
+import StarWebComponent from '../../extensions/webComponents/star/StarWebComponent';
+import { ConvertToClassNameHelper } from '../../extensions/handlebarsHelpers/ConvertToClassNameHelper';
+import { UpcomingGroup } from '../../extensions/handlebarsHelpers/UpcomingGroup';
+import { SidePanelWebComponent } from '../../extensions/webComponents/sidePanel/SidePanelComponent';
+import { SidePanelTemplateWebComponent } from '../../extensions/webComponents/sidePanelTemplate/SidePanelTemplateComponent';
+import { TagsWebComponent } from '../../extensions/webComponents/tags/TagsComponent';
+import { PersonWebComponent } from '../../extensions/webComponents/person/PersonComponent';
+import { IconWebComponent } from '../../extensions/webComponents/icon/IconComponent';
+import { URLWebComponent } from '../../extensions/webComponents/url/URLComponent';
+import { ClientAppLinkWebComponent } from '../../extensions/webComponents/clientAppLink/ClientAppLinkComponent';
+import { FlowButtonWebComponent } from '../../extensions/webComponents/flowButton/FlowButtonComponent';
+import RatingsWebComponent from '../../extensions/webComponents/ratings/RatingsWebComponent';
+import SharingWebComponent from '../../extensions/webComponents/share/SharingWebComponent';
+import { StylesheetWebComponent } from '../../extensions/webComponents/stylesheet/StylesheetComponent';
+import { PageTitleWebComponent } from '../../extensions/webComponents/pageTitle/PageTitleComponent';
+import { IExtensibilityLibrary , IComponentDefinition, ISuggestionProviderDefinition } from '@pnp/modern-search-extensibility';
+import * as Handlebars from 'handlebars';
 
-export class MTWExtensibilityLibrary {
-
-  public name(): string {
-    return 'MTWExtensibilityLibrary';
-
-  }
+export class MTWExtensibilityLibrary implements IExtensibilityLibrary  {
 
   public getCustomWebComponents(): IComponentDefinition<any>[] {
     return [
+      {
+        componentName: "mtw-page-header",
+        componentClass: PageHeaderWebComponent
+      },
+      {
+        componentName: "mtw-stream",
+        componentClass: StreamWebComponent
+      },
+      {
+        componentName: "mtw-register",
+        componentClass: RegisterWebComponent
+      },
+      {
+        componentName: "mtw-star",
+        componentClass: StarWebComponent
+      },
       {
         componentName: 'mtw-sidepanel',
         componentClass: SidePanelWebComponent
@@ -53,14 +73,34 @@ export class MTWExtensibilityLibrary {
         componentClass: FlowButtonWebComponent
       },
       {
-        componentName: 'mtw-page-title',
-        componentClass: PageTitleWebComponent
+        componentName: "mtw-rating",
+        componentClass: RatingsWebComponent
       },
-      { 
-        componentName: 'mtw-fix-url',
-        componentClass: URLLocalizerWebComponent
+      {
+        componentName: "mtw-share",
+        componentClass: SharingWebComponent
+      },
+      {
+        componentName: "mtw-stylesheet",
+        componentClass: StylesheetWebComponent
+      },
+      {
+        componentName: "mtw-page-title",
+        componentClass: PageTitleWebComponent
       }
     ];
+  }
+
+  public getCustomSuggestionProviders(): ISuggestionProviderDefinition[] {
+    return [];
+  }
+
+  public registerHandlebarsCustomizations(handelarsNamespace: typeof Handlebars) : void {
+    
+    handelarsNamespace.registerHelper("convertToClassName", ConvertToClassNameHelper.helper);
+
+    handelarsNamespace.registerHelper("groupByDate", UpcomingGroup.helper);
+
   }
 
 }

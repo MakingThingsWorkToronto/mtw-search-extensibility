@@ -1,0 +1,37 @@
+.register {
+
+    .registerButton {
+        border-radius: 10px 10px 10px 10px;
+        border: none;
+        i { margin-top: 0.3rem; }
+    }
+
+    .spinner :global(.ms-Spinner-circle) {
+        margin-right: 0.75rem;
+        margin-left: 0.25rem;
+        border-top-color: #fff !important;
+        border-bottom-color: #fff !important;
+        border-left-color: transparent !important;
+        border-right-color: transparent !important;
+        border-width: 2px;
+    }
+
+    .registerSpinner {
+        max-width: 180px;
+        border-radius: 10px 10px 10px 10px;
+        display: inline-block;
+        padding: 0.5rem;
+        display: flex;
+    }
+}
+
+
+.callout {
+    
+    max-width: 350px;
+    padding: 1rem;
+    .sharingInfoText {
+        display: block;
+    }
+    
+}

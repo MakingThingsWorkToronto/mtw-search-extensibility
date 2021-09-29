@@ -1,4 +1,4 @@
-import { IRefinementFilter, IRefinementValue, RefinementOperator } from "../models/ISearchResult";
+import { IDataFilter, IDataFilterValue, FilterConditionOperator, FilterComparisonOperator } from '@pnp/modern-search-extensibility';
 import { UrlHelper } from "./UrlHelper";
 
 export interface IUrlFilterParam {
@@ -11,7 +11,7 @@ export interface IUrlFilterParam {
     /**
      * The refinement operator to use between conditions
      */
-    o: RefinementOperator;
+    o: FilterConditionOperator;
     
     /**
      * List of conditions for this refiners. These can be raw text (including wildcards) or FQL expressions
@@ -26,36 +26,36 @@ export class SearchHelper {
     * @param selectedFilters The selected filter array
     * @param encodeTokens If true, encodes the taxonomy refinement tokens in UTF-8 to work with GET requests. Javascript encodes natively in UTF-16 by default.
     */
-   public static buildRefinementQueryString(selectedFilters: IRefinementFilter[], encodeTokens?: boolean): string {
+   public static buildRefinementQueryString(selectedFilters: IDataFilter[], encodeTokens?: boolean): string {
 
         let filters : IUrlFilterParam[] = [];
 
         selectedFilters.map(filter => {
            
-            if (filter.Values.length > 1) {
+            if (filter.values.length > 1) {
 
                 // A refiner can have multiple values selected in a multi or mon multi selection scenario
                 // The correct operator is determined by the refiner display template according to its behavior
-                const conditions = filter.Values.map(value => {
+                const conditions = filter.values.map(value => {
 
-                   return this._encodeFilter(value.RefinementToken, encodeTokens);
+                   return this._encodeFilter(value.value, encodeTokens);
 
                 });
 
                 filters.push({
-                    n: filter.FilterName,
+                    n: filter.filterName,
                     t: conditions,
-                    o: filter.Operator
+                    o: filter.operator
                 });
 
-           } else if (filter.Values.length === 1) {
+           } else if (filter.values.length === 1) {
             
-                const condition = this._encodeFilter(filter.Values[0].RefinementToken, encodeTokens);
+                const condition = this._encodeFilter(filter.values[0].value, encodeTokens);
 
                 filters.push({
-                    n: filter.FilterName,
+                    n: filter.filterName,
                     t: [ condition ],
-                    o: filter.Operator
+                    o: filter.operator
                 });
                
            }
@@ -69,8 +69,8 @@ export class SearchHelper {
     /**
      * Get the default pre-selected filters based on the url parameters
      */
-    public static getRefinementFiltersFromUrl(): IRefinementFilter[] {
-        let refinementFilters: IRefinementFilter[] = [];
+    public static getRefinementFiltersFromUrl(): IDataFilter[] {
+        let refinementFilters: IDataFilter[] = [];
 
         // Get and parse filters param for url
         const urlParamValue = UrlHelper.getQueryStringParam("filters", window.location.href);
@@ -86,7 +86,7 @@ export class SearchHelper {
                 if (filter.n && filter.t) {
 
                     // Map filter values
-                    let filterValues: IRefinementValue[] = [];
+                    let filterValues: IDataFilterValue[] = [];
 
                     filter.t.map((value: string) => {
 
@@ -101,32 +101,31 @@ export class SearchHelper {
                             token = value.replace(/\'/g,'"'); // FQL expressions use double quotes to get it work
                         }
                         
-                        let refinementValue: IRefinementValue = {
-                            RefinementCount: -1,
-                            RefinementName: value,
-                            RefinementToken: token,
-                            RefinementValue: value
+                        let refinementValue: IDataFilterValue = {
+                            name: filter.n,
+                            value: value,
+                            operator: FilterComparisonOperator.Eq
                         };
 
                         // Date intervals
                         switch (value) {
                             case "yesterday":
-                                refinementValue.RefinementToken = `range(${this._getISOPastDate(1)},max)`;
+                                refinementValue.value = `range(${this._getISOPastDate(1)},max)`;
                                 break;
                             case "weekAgo":
-                                refinementValue.RefinementToken = `range(${this._getISOPastDate(7)},max)`;
+                                refinementValue.value = `range(${this._getISOPastDate(7)},max)`;
                                 break;
                             case "monthAgo":
-                                refinementValue.RefinementToken = `range(${this._getISOPastDate(30)},max)`;
+                                refinementValue.value = `range(${this._getISOPastDate(30)},max)`;
                                 break;
                             case "threeMonthsAgo":
-                                refinementValue.RefinementToken = `range(${this._getISOPastDate(90)},max)`;
+                                refinementValue.value = `range(${this._getISOPastDate(90)},max)`;
                                 break;
                             case "yearAgo":
-                                refinementValue.RefinementToken = `range(${this._getISOPastDate(365)},max)`;
+                                refinementValue.value = `range(${this._getISOPastDate(365)},max)`;
                                 break;
                             case "olderThanYear":
-                                refinementValue.RefinementToken = `range(min,${this._getISOPastDate(365)})`;
+                                refinementValue.value = `range(min,${this._getISOPastDate(365)})`;
                                 break;
                             default:
                                 break;
@@ -135,12 +134,12 @@ export class SearchHelper {
                         filterValues.push(refinementValue);
                     });
 
-                    const filterOperator: RefinementOperator = filter.o ? filter.o : RefinementOperator.AND;
+                    const filterOperator: FilterConditionOperator = filter.o ? filter.o : FilterConditionOperator.AND;
 
                     refinementFilters.push({
-                        FilterName: filter.n,
-                        Operator: filterOperator,
-                        Values: filterValues
+                        filterName: filter.n,
+                        operator: filterOperator,
+                        values: filterValues
                     });
                 }
             });

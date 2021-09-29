@@ -1,0 +1,60 @@
+.pageHeader {
+
+    .headerImage {
+        background-size: cover;
+        height: 400px;
+        width: 100%;
+    }
+
+    .headerBar {
+        
+        max-width: 1212px;
+        margin: -140px auto 0 auto;
+        padding: 0;
+        background: "[theme: white, default: #0078d7]";
+
+        .headerColorBar {
+            background: "[theme: themePrimary, default: #0078d7]";
+            color: "[theme: white, default: #0078d7]";
+            padding: 1rem;
+        }
+
+        .headerContents {
+
+            display: flex;
+            padding: 1rem;
+
+            .iconBox {
+
+                .iconCircle {
+                    
+                    border-radius: 35px 35px 35px 35px;
+                    background:"[theme: themePrimary, default: #0078d7]";
+                    width: 70px; height: 70px;
+                    background-size: 45px;
+                    background-repeat: no-repeat;
+                    background-position: center center;
+
+                }
+
+            }
+
+            .textBox {
+                display: block;
+                padding-left: 1rem;
+                .presenters {
+                    display:flex;
+                    align-items: center;
+                    span { margin-top: -0.25rem; }
+                }
+                .titleText {
+                    padding-bottom: 0.75rem;
+                    display: block;
+                }
+            }
+
+        }
+
+    }
+
+}
