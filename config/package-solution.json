@@ -6,7 +6,14 @@
     "version": "1.0.2.0",
     "includeClientSideAssets": true,
     "skipFeatureDeployment": true,
-    "isDomainIsolated": false
+    "isDomainIsolated": false,
+    "developer": {
+        "mpnId": "4995822",
+        "name": "Making Things Work Ltd.",
+        "termsOfUseUrl": "https://github.com/MakingThingsWorkToronto/mtw-search-extensibility/blob/master/LICENSE",
+        "privacyUrl": "",
+        "websiteUrl": "https://github.com/MakingThingsWorkToronto/mtw-search-extensibility/"
+    }
   },
   "paths": {
     "zippedPackage": "solution/mtw-extensibility.sppkg"
