@@ -17,10 +17,14 @@ import RatingsWebComponent from '../../extensions/webComponents/ratings/RatingsW
 import SharingWebComponent from '../../extensions/webComponents/share/SharingWebComponent';
 import { StylesheetWebComponent } from '../../extensions/webComponents/stylesheet/StylesheetComponent';
 import { PageTitleWebComponent } from '../../extensions/webComponents/pageTitle/PageTitleComponent';
-import { IExtensibilityLibrary , IComponentDefinition, ISuggestionProviderDefinition } from '@pnp/modern-search-extensibility';
+import { IExtensibilityLibrary , IComponentDefinition, ISuggestionProviderDefinition, ILayoutDefinition } from '@pnp/modern-search-extensibility';
 import * as Handlebars from 'handlebars';
 
 export class MTWExtensibilityLibrary implements IExtensibilityLibrary  {
+
+  public getCustomLayouts(): ILayoutDefinition[] {
+    return [];
+  }
 
   public getCustomWebComponents(): IComponentDefinition<any>[] {
     return [

@@ -29,6 +29,8 @@ export class PageHeaderComponent extends React.Component<IPageHeaderComponentPro
         const iconCircleCssClass = cssClassPrefix + "-icon-circle";
         const iconColorBarCssClass = cssClassPrefix + "-back";
 
+        const pageHeaderClassName = styles.default.pageHeader + (this.props.className ? " " + this.props.className : "");
+
         let bgImage = {};
 
         (window as any).cleBack = iconColorBarCssClass;
@@ -39,7 +41,7 @@ export class PageHeaderComponent extends React.Component<IPageHeaderComponentPro
             };
         }
 
-        return <div className={styles.default.pageHeader}>
+        return <div className={pageHeaderClassName}>
             <div className={styles.default.headerImage} style={bgImage}>
             </div>
             <div className={styles.default.headerBar}>

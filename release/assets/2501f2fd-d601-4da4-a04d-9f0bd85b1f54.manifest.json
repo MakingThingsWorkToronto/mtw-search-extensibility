@@ -6,7 +6,7 @@
   "manifestVersion": 2,
   "loaderConfig": {
     "internalModuleBaseUrls": [
-      "<!-- PATH TO CDN -->"
+      "https://localhost:4321/dist/"
     ],
     "entryModuleId": "mtw-extensibility-library",
     "scriptResources": {

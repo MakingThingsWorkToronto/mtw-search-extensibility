@@ -2,6 +2,8 @@
 export interface IPageHeaderComponentProps {
 
     headerSelector?: string;
+
+    className?:string;
     
     titleText?:string;
 

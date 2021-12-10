@@ -23,7 +23,7 @@
     "@uifabric/file-type-icons": "^7.6.12",
     "handlebars": "^4.7.7",
     "react-copy-to-clipboard": "^5.0.2",
-    "@pnp/modern-search-extensibility": "1.0.4"
+    "@pnp/modern-search-extensibility": "1.0.9"
   },
   "devDependencies": {
     "@microsoft/rush-stack-compiler-3.7": "0.2.8",
