@@ -109,7 +109,7 @@ export class PersonComponent extends React.Component<IPersonComponentProps, IPer
         
         let items : IOverflowSetItemProps[] = [];
         let overflowItems : IOverflowSetItemProps[] = [];
-        let nbrItems = (!this.props.nbrItems || this.props.nbrItems.trim().length <= 0) ? this.DEFAULT_ITEMS : parseInt(this.props.nbrItems);
+        let nbrItems = (typeof this.props.nbrItems === "string" && this.props.nbrItems.trim().length === 0) || !this.props.nbrItems ? this.DEFAULT_ITEMS : Number(this.props.nbrItems);
         let users : IPersonItem[] = [];
         const usersParts = fieldValue.split(" | ");
         let blank = 0;

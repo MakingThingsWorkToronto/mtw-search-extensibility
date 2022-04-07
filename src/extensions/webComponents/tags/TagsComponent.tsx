@@ -107,7 +107,7 @@ export class TagsComponent extends React.Component<ITagsComponentProps, ITagsCom
         
         let items : IOverflowSetItemProps[] = [];
         let overflowItems : IOverflowSetItemProps[] = [];
-        let nbrItems = (!this.props.nbrItems || this.props.nbrItems.trim().length <= 0) ? this.DEFAULT_ITEMS : parseInt(this.props.nbrItems);
+        let nbrItems = (typeof this.props.nbrItems === "string" && this.props.nbrItems.trim().length === 0) || !this.props.nbrItems ? this.DEFAULT_ITEMS : Number(this.props.nbrItems);
         let fieldValue = this.props.value ? this.props.value.trim() : "";
 
         if(nbrItems == NaN) {
