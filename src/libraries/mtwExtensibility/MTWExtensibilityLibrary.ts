@@ -6,6 +6,7 @@ import StarWebComponent from '../../extensions/webComponents/star/StarWebCompone
 import { ConvertToClassNameHelper } from '../../extensions/handlebarsHelpers/ConvertToClassNameHelper';
 import { UpcomingGroup } from '../../extensions/handlebarsHelpers/UpcomingGroup';
 import { SidePanelWebComponent } from '../../extensions/webComponents/sidePanel/SidePanelComponent';
+import { SidePanelIconWebComponent } from '../../extensions/webComponents/sidePanelIcon/SidePanelIconComponent';
 import { SidePanelTemplateWebComponent } from '../../extensions/webComponents/sidePanelTemplate/SidePanelTemplateComponent';
 import { TagsWebComponent } from '../../extensions/webComponents/tags/TagsComponent';
 import { PersonWebComponent } from '../../extensions/webComponents/person/PersonComponent';
@@ -17,8 +18,11 @@ import RatingsWebComponent from '../../extensions/webComponents/ratings/RatingsW
 import SharingWebComponent from '../../extensions/webComponents/share/SharingWebComponent';
 import { StylesheetWebComponent } from '../../extensions/webComponents/stylesheet/StylesheetComponent';
 import { PageTitleWebComponent } from '../../extensions/webComponents/pageTitle/PageTitleComponent';
+import { ConditionalRendererWebComponent } from '../../extensions/webComponents/conditionalRenderer/ConditionalRendererComponent';
+
 import { IExtensibilityLibrary , IComponentDefinition, ISuggestionProviderDefinition, ILayoutDefinition } from '@pnp/modern-search-extensibility';
 import * as Handlebars from 'handlebars';
+import { GetUserDisplayName } from '../../extensions/handlebarsHelpers/GetUserDisplayName';
 
 export class MTWExtensibilityLibrary implements IExtensibilityLibrary  {
 
@@ -47,6 +51,10 @@ export class MTWExtensibilityLibrary implements IExtensibilityLibrary  {
       {
         componentName: 'mtw-sidepanel',
         componentClass: SidePanelWebComponent
+      },
+      {
+        componentName: 'mtw-sidepanel-icon',
+        componentClass: SidePanelIconWebComponent,
       },
       {
         componentName: 'mtw-sidepanel-template',
@@ -91,6 +99,10 @@ export class MTWExtensibilityLibrary implements IExtensibilityLibrary  {
       {
         componentName: "mtw-page-title",
         componentClass: PageTitleWebComponent
+      },
+      {
+        componentName: "mtw-conditional-renderer",
+        componentClass: ConditionalRendererWebComponent
       }
     ];
   }
@@ -104,6 +116,8 @@ export class MTWExtensibilityLibrary implements IExtensibilityLibrary  {
     handelarsNamespace.registerHelper("convertToClassName", ConvertToClassNameHelper.helper);
 
     handelarsNamespace.registerHelper("groupByDate", UpcomingGroup.helper);
+
+    handelarsNamespace.registerHelper("getUserDisplayName", GetUserDisplayName.helper);
 
   }
 

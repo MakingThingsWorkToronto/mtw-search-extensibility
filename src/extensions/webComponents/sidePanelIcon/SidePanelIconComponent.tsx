@@ -2,15 +2,22 @@ import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import { BaseWebComponent } from '@pnp/modern-search-extensibility';
 import { Panel, PanelType } from "@fluentui/react/lib/Panel";
-import styles from './SidePanelComponent.module.scss';
+import styles from './SidePanelIconComponent.module.scss';
 import { Icon } from '@fluentui/react/lib/Icon';
+import { IconButton } from '@fluentui/react/lib/Button';
+import { TooltipHost, ITooltipHostStyles } from '@fluentui/react/lib/Tooltip';
 
-export interface ISidePanelComponentProps {
+export interface ISidePanelIconComponentProps {
 
     /**
      * Title of the pop out panel
      */
     title?:string;
+
+    /**
+     * Icon to display as the link
+     */
+    icon?:string;
 
     /**
      * The URL to the view form
@@ -28,33 +35,50 @@ export interface ISidePanelComponentProps {
     position?:string;
 
     /**
-     * Determines if we should show open link in new window option
-     */
-    newWindow?:boolean;
-
-    /**
      * Link class name
      */
     linkClassName?:string;
 
 }
 
-export interface ISidePanelComponentState {
+export interface ISidePanelIconComponentState {
     showPanel: boolean;
 }
 
-export interface ISidePanelComponentTypeSize {
-    PanelType: PanelType;
+export interface ISidePanelIconComponentTypeSize {
+    Type: PanelType;
     Size: string;
 }
 
-export class SidePanelComponent extends React.Component<ISidePanelComponentProps, ISidePanelComponentState> {
+export class SidePanelIconComponent extends React.Component<ISidePanelIconComponentProps, ISidePanelIconComponentState> {
     
-    constructor(props: ISidePanelComponentProps) {
+    constructor(props: ISidePanelIconComponentProps) {
         super(props);
         this.state = {
             showPanel: false
         };
+    }
+
+    private getIconButton() :JSX.Element {
+        
+        const title = this.props.title ? this.props.title : "";
+        const icon = {iconName: this.props.icon};
+        const button = <IconButton iconProps={icon} aria-label={title} onClick={(e) => { this.setState({ showPanel: true }); }} className={this.props.linkClassName} />;
+        const calloutProps = { gapSpace: 0 };
+        const hostStyles: Partial<ITooltipHostStyles> = { root: { display: 'inline-block' } };
+
+        if(this.props.title) {
+            return <TooltipHost
+                    content={this.props.title}        
+                    calloutProps={calloutProps}
+                    styles={hostStyles}
+                    setAriaDescribedBy={false}
+                    >
+                    {button}
+                </TooltipHost>;
+        } else {
+            return button;
+        }
     }
 
     public render() {
@@ -63,20 +87,16 @@ export class SidePanelComponent extends React.Component<ISidePanelComponentProps
                                 ? this.props.url.indexOf(currentDomain) == 0 || this.props.url.indexOf("/") == 0
                                 : false;
         const panelTypeSize = this.getPanelTypeSize();
-        const openInNewWindow = this.props.newWindow === true
-                        ? <a href={this.props.url} className={styles.openInNewWindow} target="_blank" data-interception="off"><Icon iconName='OpenInNewTab' /></a> 
-                        : null;
 
         return <div className={styles.sidePanelLink}>
-            {openInNewWindow}
             {sameDomain 
-                ? <span onClick={(e) => { this.setState({ showPanel: true }); }} className={this.props.linkClassName}>{this.props.title}</span>
-                : <a href={this.props.url} target="_blank" data-interception="off" className={this.props.linkClassName}>{this.props.title}</a>}
+                ? this.getIconButton()
+                : <a href={this.props.url} target="_blank" data-interception="off" className={this.props.linkClassName}><Icon iconName={this.props.icon} /></a>}
             
             <Panel
                 headerText={this.props.title}
                 isOpen={this.state.showPanel}
-                type={panelTypeSize.PanelType}
+                type={panelTypeSize.Type}
                 isLightDismiss={true}
                 customWidth={panelTypeSize.Size}
                 onDismiss={() => {
@@ -93,7 +113,7 @@ export class SidePanelComponent extends React.Component<ISidePanelComponentProps
         </div>;
     }
 
-    private getPanelTypeSize(): ISidePanelComponentTypeSize {
+    private getPanelTypeSize(): ISidePanelIconComponentTypeSize {
 
         let panelType : PanelType = null;
         let size: string = null;
@@ -144,14 +164,14 @@ export class SidePanelComponent extends React.Component<ISidePanelComponentProps
         }
         
         return {
-            PanelType : panelType,
+            Type : panelType,
             Size: size
         };
 
     }
 }
 
-export class SidePanelWebComponent extends BaseWebComponent {
+export class SidePanelIconWebComponent extends BaseWebComponent {
    
     public constructor() {
         super(); 
@@ -162,7 +182,7 @@ export class SidePanelWebComponent extends BaseWebComponent {
        let props = this.resolveAttributes();
 
        // You can use this._ctx here to access current Web Part context
-       const customComponent = <SidePanelComponent {...props}/>;
+       const customComponent = <SidePanelIconComponent {...props}/>;
        ReactDOM.render(customComponent, this);
     }    
 }

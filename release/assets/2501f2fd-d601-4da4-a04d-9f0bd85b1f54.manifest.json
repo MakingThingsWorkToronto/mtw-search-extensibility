@@ -12,7 +12,7 @@
     "scriptResources": {
       "mtw-extensibility-library": {
         "type": "path",
-        "path": "mtw-extensibility-library_e28af2ac9afad9954e8a.js"
+        "path": "mtw-extensibility-library_9884e0eea0422d47cdaa.js"
       },
       "@microsoft/sp-component-base": {
         "type": "component",
