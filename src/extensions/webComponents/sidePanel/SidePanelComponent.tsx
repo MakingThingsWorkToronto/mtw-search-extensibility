@@ -70,8 +70,8 @@ export class SidePanelComponent extends React.Component<ISidePanelComponentProps
         return <div className={styles.sidePanelLink}>
             {openInNewWindow}
             {sameDomain 
-                ? <span onClick={(e) => { this.setState({ showPanel: true }); }} className={this.props.linkClassName}>{this.props.title}</span>
-                : <a href={this.props.url} target="_blank" data-interception="off" className={this.props.linkClassName}>{this.props.title}</a>}
+                ? <span onClick={(e) => { this.setState({ showPanel: true }); }} className={this.props.linkClassName} title={this.props.title}>{this.props.title}</span>
+                : <a href={this.props.url} target="_blank" data-interception="off" className={this.props.linkClassName} title={this.props.title}>{this.props.title}</a>}
             
             <Panel
                 headerText={this.props.title}

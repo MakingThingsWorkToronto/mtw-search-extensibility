@@ -63,7 +63,7 @@ export class SidePanelIconComponent extends React.Component<ISidePanelIconCompon
         
         const title = this.props.title ? this.props.title : "";
         const icon = {iconName: this.props.icon};
-        const button = <IconButton iconProps={icon} aria-label={title} onClick={(e) => { this.setState({ showPanel: true }); }} className={this.props.linkClassName} />;
+        const button = <IconButton iconProps={icon} aria-label={title} onClick={(e) => { this.setState({ showPanel: true }); }} className={this.props.linkClassName} title={title} />;
         const calloutProps = { gapSpace: 0 };
         const hostStyles: Partial<ITooltipHostStyles> = { root: { display: 'inline-block' } };
 

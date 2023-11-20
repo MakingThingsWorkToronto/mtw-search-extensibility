@@ -1,7 +1,7 @@
 {
   "name": "mtw-extensibility",
   "description": "Making Things Work solution for creating PnP Modern Search extensions",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "private": false,
   "main": "lib/index.js",
   "engines": {
@@ -14,11 +14,15 @@
   },
   "dependencies": {
     "@fluentui/react": "^7.139.2",
+    "@microsoft/rush-stack-compiler-4.2": "^0.2.0",
     "@microsoft/sp-component-base": "1.12.1",
     "@microsoft/sp-core-library": "1.12.1",
     "@microsoft/sp-http": "1.12.1",
     "@microsoft/sp-webpart-base": "1.12.1",
+    "@pnp/graph": "^3.11.0",
     "@pnp/modern-search-extensibility": "1.0.9",
+    "@pnp/nodejs": "^3.11.0",
+    "@pnp/sp": "^3.11.0",
     "@types/es6-promise": "0.0.33",
     "@types/webpack-env": "1.13.1",
     "@uifabric/file-type-icons": "^7.6.12",

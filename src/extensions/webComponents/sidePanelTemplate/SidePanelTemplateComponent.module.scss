@@ -4,6 +4,7 @@
     :global(.ms-Panel-headerText) {  white-space: nowrap; overflow: hidden; text-overflow: ellipsis; width:95%; }
     :global(.ms-Panel-content) {padding-left:1rem !important;padding-right:1rem !important;}
 }
+
 .sidePanelLink {
     display: flex;
     > a,

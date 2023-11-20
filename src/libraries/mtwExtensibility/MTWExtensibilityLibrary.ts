@@ -12,6 +12,7 @@ import { TagsWebComponent } from '../../extensions/webComponents/tags/TagsCompon
 import { PersonWebComponent } from '../../extensions/webComponents/person/PersonComponent';
 import { IconWebComponent } from '../../extensions/webComponents/icon/IconComponent';
 import { URLWebComponent } from '../../extensions/webComponents/url/URLComponent';
+import { BlockWebComponent } from '../../extensions/webComponents/block/BlockComponent';
 import { ClientAppLinkWebComponent } from '../../extensions/webComponents/clientAppLink/ClientAppLinkComponent';
 import { FlowButtonWebComponent } from '../../extensions/webComponents/flowButton/FlowButtonComponent';
 import RatingsWebComponent from '../../extensions/webComponents/ratings/RatingsWebComponent';
@@ -19,7 +20,7 @@ import SharingWebComponent from '../../extensions/webComponents/share/SharingWeb
 import { StylesheetWebComponent } from '../../extensions/webComponents/stylesheet/StylesheetComponent';
 import { PageTitleWebComponent } from '../../extensions/webComponents/pageTitle/PageTitleComponent';
 import { ConditionalRendererWebComponent } from '../../extensions/webComponents/conditionalRenderer/ConditionalRendererComponent';
-
+import { ReplaceDomain } from '../../extensions/handlebarsHelpers/ReplaceDomain';
 import { IExtensibilityLibrary , IComponentDefinition, ISuggestionProviderDefinition, ILayoutDefinition } from '@pnp/modern-search-extensibility';
 import * as Handlebars from 'handlebars';
 import { GetUserDisplayName } from '../../extensions/handlebarsHelpers/GetUserDisplayName';
@@ -103,6 +104,10 @@ export class MTWExtensibilityLibrary implements IExtensibilityLibrary  {
       {
         componentName: "mtw-conditional-renderer",
         componentClass: ConditionalRendererWebComponent
+      },
+      {
+        componentName: "mtw-block",
+        componentClass: BlockWebComponent
       }
     ];
   }
@@ -118,6 +123,8 @@ export class MTWExtensibilityLibrary implements IExtensibilityLibrary  {
     handelarsNamespace.registerHelper("groupByDate", UpcomingGroup.helper);
 
     handelarsNamespace.registerHelper("getUserDisplayName", GetUserDisplayName.helper);
+
+    handelarsNamespace.registerHelper("replaceDomain", ReplaceDomain.helper);
 
   }
 

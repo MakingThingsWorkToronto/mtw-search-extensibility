@@ -75,10 +75,28 @@
           "isDirectDependency": false
         },
         {
+          "componentId": "02a01e42-69ab-403d-8a16-acd128661f8e",
+          "componentName": "@microsoft/office-ui-fabric-react-bundle",
+          "componentVersion": "1.12.1",
+          "isDirectDependency": true
+        },
+        {
           "componentId": "0d910c1c-13b9-4e1c-9aa4-b008c5e42d7d",
           "componentName": "react",
           "componentVersion": "16.9.0",
-          "isDirectDependency": true
+          "isDirectDependency": false
+        },
+        {
+          "componentId": "17ce0976-e69a-4355-be84-89b69a74717d",
+          "componentName": "@ms/uifabric-styling-bundle",
+          "componentVersion": "0.1.0",
+          "isDirectDependency": false
+        },
+        {
+          "componentId": "aa0a46ec-1505-43cd-a44a-93f3a5aa460a",
+          "componentName": "react-dom",
+          "componentVersion": "16.9.0",
+          "isDirectDependency": false
         },
         {
           "componentId": "aa0a46ec-1505-43cd-a44a-93f3a5aa460a",

@@ -51,7 +51,7 @@ export class SidePanelTemplateComponent extends React.Component<ISidePanelTempla
         const panelTypeSize = this.getPanelTypeSize();
         
         return <div className={styles.sidePanelLink}>
-            <span onClick={(e) => { this.setState({ showPanel: true }); }}>{this.props.title}</span>
+            <span onClick={(e) => { this.setState({ showPanel: true }); }} title={this.props.title}>{this.props.title}</span>
             <Panel
                 headerText={this.props.title}
                 isOpen={this.state.showPanel}

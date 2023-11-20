@@ -57,7 +57,9 @@ export class RatingsComponent extends React.Component<IRatingsComponentProps, IR
                 getAriaLabel={this.getRatingComponentAriaLabel}
                 // eslint-disable-next-line react/jsx-no-bind
                 onChange={this.ratingChanged.bind(this)}
-                ariaLabelFormat={'Select {0} of {1} stars'} />
+                ariaLabelFormat={'Select {0} of {1} stars'} 
+                allowZeroStars
+                />
              : <Spinner size={SpinnerSize.small} />
             }
             {this.renderCallout()}
