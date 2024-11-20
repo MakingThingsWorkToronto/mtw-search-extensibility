@@ -4,20 +4,20 @@ import { IStreamComponentProps } from './IStreamComponentProps';
 import { IStreamComponentState } from './IStreamComponentState';
 
 export class StreamComponent extends React.Component<IStreamComponentProps, IStreamComponentState> {
-    
+
     constructor(props: IStreamComponentProps) {
         super(props);
     }
-    
+
     protected async onInit(): Promise<void> {
         // initialize component
     }
-        
+
     public render() {
-        
+
         const width : string = this.props.width ? this.props.width : "100%";
         const height: string = this.props.height ? this.props.height: "100%";
-        
+
         let attr = {
             className: styles.default.streamVideo + (this.props.className ? " " + this.props.className : " "),
             width: width,
@@ -41,12 +41,12 @@ export class StreamComponent extends React.Component<IStreamComponentProps, IStr
     }
 
     private _buildSrc() : string {
-        
+
         let src: string = this.props.streamLink;
 
-        if(src.indexOf("embed/video/")===-1 && src.indexOf("/video/")>-1) {
-            src = src.replace("video/", "embed/video/");
-        }
+//        if(src.indexOf("embed/video/")===-1 && src.indexOf("/video/")>-1) {
+//            src = src.replace("video/", "embed/video/");
+//        }
 
         if(src) {
             src += "?"
